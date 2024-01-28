@@ -38,12 +38,10 @@
                     <div class="menu menu-rounded menu-active-bg menu-state-primary menu-column menu-lg-row menu-title-gray-700 menu-icon-gray-500 menu-arrow-gray-500 menu-bullet-gray-500 my-5 my-lg-0 align-items-stretch fw-semibold px-2 px-lg-0"
                         id="kt_app_header_menu" data-kt-menu="true">
                         <!--begin:Menu item-->
-                        <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                            data-kt-menu-placement="bottom-start" data-kt-menu-offset="-50,0"
-                            class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                        <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                             <!--begin:Menu link-->
-                            <a href="{{ route('index-product') }}" class="menu-title"
-                                style="font-weight: bold; font-size:15px;color:white;">Dashboards</a>
+                            <a @if (request()->is('/')) class="actives" @endif
+                                href="{{ route('index-product') }}" class="menu-header">Dashboards</a>
                             <!--end:Menu link-->
                             <!--begin:Menu sub-->
 
@@ -51,27 +49,26 @@
                         </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                            data-kt-menu-placement="bottom-start" data-kt-menu-offset="-100,0"
-                            class="menu-item menu-lg-down-accordion me-0 me-lg-2">
-                            <!--begin:Menu link-->
-                            <a href="" class="menu-title"
-                                style="font-weight: bold; font-size:15px;color:white;margin-left:10px">List
-                                Company</a>
+                        @if (Auth::check())
+                            <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                                <!--begin:Menu link-->
+                                <a @if (request()->is('product')) class="actives" @endif
+                                    href="{{ route('index-data') }}" class="menu-header">List
+                                    Company</a>
 
-                        </div>
-                        <!--end:Menu item-->
-                        <!--begin:Menu item-->
-                        <div data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
-                            data-kt-menu-placement="bottom-start"
-                            class="menu-item menu-lg-down-accordion menu-sub-lg-down-indention me-0 me-lg-2">
-                            <!--begin:Menu link-->
-                            <a href="" class="menu-title"
-                                style="font-weight: bold; font-size:15px;color:white; margin-top:2px; margin-left:7px">About</a>
-                            <!--end:Menu link-->
-                            <!--begin:Menu sub-->
+                            </div>
+                            <!--end:Menu item-->
+                            <!--begin:Menu item-->
+                            <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                                <!--begin:Menu link-->
+                                <a @if (request()->is('about')) class="actives" @endif
+                                    href="{{ route('index-about') }}" class="menu-header" style="margin-top:1.6px">About
+                                    Me</a>
+                                <!--end:Menu link-->
+                                <!--begin:Menu sub-->
 
-                        </div>
+                            </div>
+                        @endif
                         <!--end:Menu sub-->
                     </div>
                     <!--end:Menu item-->
@@ -86,8 +83,13 @@
 
             @guest
                 @if (Route::has('login'))
-                    <div class="app-navbar-item mt-10">
-                        <a href="{{ route('login') }}" class="btn btn-primary btn-sm">LOGIN</a>
+                    <div class="app-navbar flex-shrink-0">
+                        <div class="app-navbar-item ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
+                            <div class="cursor-pointer symbol symbol-35px">
+                                <a href="{{ route('login') }}" style="border: solid gray 1px; font-weight:bold"
+                                    class="btn btn-outline-secondary btn-sm">Member</a>
+                            </div>
+                        </div>
                     </div>
                 @endif
                 {{-- @if (Route::has('register'))
@@ -123,7 +125,7 @@
                             </div>
                             <div class="menu-item px-5">
                                 <a href="{{ route('index-company') }}" class="menu-link px-5">
-                                    <span class="menu-text">My Company</span>
+                                    <span class="menu-text">Details Company</span>
                                 </a>
                             </div>
                             <div class="separator my-2"></div>
@@ -212,8 +214,8 @@
                             </div>
                         </div>
                     </div>
-                @endguest
-            </div>
+                </div>
+            @endguest
         </div>
     </div>
 </div>

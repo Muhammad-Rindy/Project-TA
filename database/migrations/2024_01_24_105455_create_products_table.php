@@ -16,7 +16,7 @@ return new class extends Migration {
             $table->id();
             $table->string('model');
             $table->string('merk');
-            $table->string('type');
+            $table->string('type')->nullable();
             $table->string('speed');
             $table->string('transmition');
             $table->string('fuel');

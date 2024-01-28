@@ -1,9 +1,27 @@
 @extends('layouts.master')
 
 @section('content')
+    @if (session('success'))
+        <div id="live">
+            <div class="check-alert">
+                <i class="far fa-check-circle color-alert"></i> &nbsp; &nbsp;
+                <span>Well Done! {{ session('success') }}</span>
+            </div>
+        </div>
+    @elseif ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div id="live">
+                <div class="danger-alert">
+                    <i class="far fa-times-circle shine-alert"></i>
+                    &nbsp; &nbsp;
+                    <span>Wrong! {{ $error }}</span>
+                </div>
+            </div>
+        @endforeach
+    @endif
     <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
         <!--begin::Hero-->
-        <div id="kt_app_hero" class="app-hero py-6">
+        <div id="kt_app_hero" class="app-hero" style="margin-top: 50px">
             <!--begin::Hero container-->
             <div id="kt_app_hero_container" class="app-container container-xxl d-flex">
                 <!--begin::Hero wrapper=-->
@@ -88,7 +106,7 @@
                                 <!--begin::Menu item-->
                                 <div class="menu-item m-0 p-0">
                                     <a class="menu-link py-3 px-4 active" href="../../demo45/dist/index.html">
-                                        <span class="menu-title">Car's</span>
+                                        <span class="menu-title">Transportation</span>
                                     </a>
                                 </div>
                             </div>
@@ -123,7 +141,7 @@
                                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Add your product
@@ -140,9 +158,10 @@
                                                             <div class="modal-body">
                                                                 @csrf
                                                                 <select name="company_id" class="form-select"
-                                                                    aria-label="Default select example" type="hidden"
-                                                                    required>
-                                                                    <option value="{{ $companies->id }}">
+                                                                    aria-label="Default select example"
+                                                                    style="display: none" required>
+                                                                    <option style="display: none"
+                                                                        value="{{ $companies->id }}">
                                                                         {{ $companies->name }}
                                                                     </option>
                                                                 </select>
@@ -154,15 +173,19 @@
                                                                     class="form-control" aria-describedby="name" required>
                                                                 <label for="type" class="form-label">Type</label>
                                                                 <input type="text" id="type" name="type"
-                                                                    class="form-control" aria-describedby="name" required>
+                                                                    class="form-control" aria-describedby="name">
                                                                 <label for="speed" class="form-label">Speed</label>
                                                                 <input type="text" id="speed" name="speed"
                                                                     class="form-control" aria-describedby="name" required>
+                                                                <label for="transmition"
+                                                                    class="form-label">Transmition</label>
                                                                 <select name="transmition" class="form-select"
                                                                     aria-label="Default select example" type="hidden"
                                                                     required>
-                                                                    <option value="AT / Automatic Gear">AT</option>
-                                                                    <option value="MT / Manual Gear">MT</option>
+                                                                    <option value="AT / Automatic Gear">AT / Automatic
+                                                                        Gear</option>
+                                                                    <option value="MT / Manual Gear">MT / Manual Gear
+                                                                    </option>
                                                                 </select>
                                                                 <label for="fuel" class="form-label">Fuel</label>
                                                                 <input type="text" id="fuel" name="fuel"
@@ -220,23 +243,32 @@
                                     <div class="card h-100">
                                         <img src="{{ asset('storage/' . $product->image) }}" height="375"
                                             class="card-img-top" alt="Product Image">
-                                        <div class="card-body">
-                                            <h2 class="card-title">{{ $product->name }} - {{ $product->years_output }}</h2>
-                                            <p class="card-text">{{ $product->description }}</p>
+                                        <div style="padding: 15px 20px 0px 20px">
+                                            <h2 class="card-title">{{ $product->model }} - {{ $product->years_output }}
+                                            </h2>
+                                            <p class="card-text" style="text-align: justify">{{ $product->description }}
+                                            </p>
                                             <hr>
+                                            <h3>Price: Rp.{{ number_format($product->price, 2, ',', '.') }}</h3>
                                             <p class="card-text">Brand : {{ $product->merk }}</p>
-                                            <p class="card-text">Model : {{ $product->model }}</p>
-                                            <p class="card-text">Type : {{ $product->type }}</p>
+                                            @if ($product->type == 0)
+                                                <p class="card-text">Type : - </p>
+                                            @else
+                                                <p class="card-text">Type : {{ $product->type }}</p>
+                                            @endif
                                             <p class="card-text">Transmition : {{ $product->transmition }}</p>
                                             <p class="card-text">Vehicle fuel : {{ $product->fuel }}</p>
+                                            <p>📍 Location : {{ $product->location }}</p>
                                             <hr>
-                                            <p>Location : {{ $product->location }}</p>
-                                            <h4>Price: Rp.{{ number_format($product->price, 2, ',', '.') }}</h4>
                                         </div>
                                         <div class="d-grid gap-2 col-6 mx-auto mb-5">
                                             <a href="/" class="btn btn-primary btn-sm">Booking now</a>
                                         </div>
                                         <div class="card-footer">
+                                            @if ($product->company)
+                                                <small class="text-body-secondary">{{ $product->company->name }}</small>
+                                                <br>
+                                            @endif
                                             <small class="text-body-secondary">Created at
                                                 {{ $product->created_at }}</small>
                                         </div>

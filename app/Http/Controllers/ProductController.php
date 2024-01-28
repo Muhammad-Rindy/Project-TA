@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Redirect;
+use Datatables;
 
 class ProductController extends Controller
 {
@@ -22,6 +23,10 @@ class ProductController extends Controller
         return view('index-product', compact('companies', 'products'));
     }
 
+
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -32,13 +37,61 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function index_data()
+    {
 
+
+        $user_id = Auth::id();
+        $company = Company::where('user_id', $user_id)->first();
+        $products = Product::where('company_id', $company->id)->get();
+
+    return view('index-data', compact('products'));
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+     public function update_data(Product $product, Request $request)
+    {
+        $request->validate([
+            'model' => 'required',
+            'merk' => 'required',
+            'type' => 'required',
+            'speed' => 'required',
+            'transmition' => 'required',
+            'fuel' => 'required',
+            'color' => 'required',
+            'years_output' => 'required',
+            'description' => 'required',
+            'location' => 'required',
+            'price' => 'required',
+        ]);
+
+
+
+
+        $product->update([
+                'model' => $request->model,
+                'merk' => $request->merk,
+                'type' => $request->type,
+                'speed' => $request->speed,
+                'transmition' => $request->transmition,
+                'fuel' => $request->fuel,
+                'color' => $request->color,
+                'years_output' => $request->years_output,
+                'description' => $request->description,
+                'location' => $request->location,
+                'price' => $request->price,
+        ]);
+
+        return Redirect::back()->with('success', 'Form submitted successfully');
+    }
+
+
+
     public function store_product(Request $request)
     {
         $request->validate([
@@ -104,10 +157,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
+
 
     /**
      * Update the specified resource in storage.
@@ -116,10 +166,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -127,8 +174,9 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete_product(Product $product)
     {
-        //
+        $product->delete();
+        return Redirect::back()->with('success', 'Deleted successfully');
     }
 }

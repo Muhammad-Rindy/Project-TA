@@ -1,6 +1,24 @@
 @extends('layouts.master')
 
 @section('content')
+    @if (session('success'))
+        <div id="live">
+            <div class="check-alert">
+                <i class="far fa-check-circle color-alert"></i> &nbsp; &nbsp;
+                <span>Well Done! {{ session('success') }}</span>
+            </div>
+        </div>
+    @elseif ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div id="live">
+                <div class="danger-alert">
+                    <i class="far fa-times-circle shine-alert"></i>
+                    &nbsp; &nbsp;
+                    <span>Wrong! {{ $error }}</span>
+                </div>
+            </div>
+        @endforeach
+    @endif
     <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
         <!--begin::Hero-->
         <div id="kt_app_hero" class="app-hero py-6">
@@ -36,22 +54,16 @@
                             <div
                                 class="app-toolbar-wrapper d-flex align-items-center flex-stack flex-wrap gap-2 py-4 w-100">
                                 <!--begin::Page title-->
-                                <div class="page-title d-flex flex-column justify-content-center gap-2 me-3">
+                                <div class="page-title d-flex flex-column justify-content-center gap-2">
                                     <!--begin::Title-->
-                                    <h1
-                                        class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-1 m-0">
-                                        My Company
-                                        <!--begin::Description-->
-                                        <span class="page-desc text-muted fs-7 fw-semibold"></span>
-                                        <!--end::Description-->
-                                    </h1>
+
 
                                 </div>
 
                                 <!--end::Page title-->
                                 <!--begin::Actions-->
                                 <div class="d-flex align-items-center gap-2 gap-lg-3">
-                                    @if (Auth::check())
+                                    @if ($companies->count() === 0)
                                         <!-- Button trigger modal -->
                                         <button type="button" style="border: solid gray 1px; font-weight:bold"
                                             class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
@@ -64,7 +76,7 @@
                                     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
                                         data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
                                         aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
+                                        <div class="modal-dialog modal-dialog-centered modal-lg">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Your
@@ -117,7 +129,7 @@
                             <div class="card mb-3">
                                 @if ($companies)
                                     @if ($companies->count() === null)
-                                        <p>Belum ada perusahaan.</p>
+                                        <p>Nothing</p>
                                     @else
                                         <img src="{{ asset('storage/' . $companies->image) }}" class="card-img-top mt-2"
                                             alt="Product Image">
@@ -142,7 +154,7 @@
                                         </div>
                                     @endif
                                 @else
-                                    <h4 style="text-align: center" class="m-2">No Company</h4>
+                                    <h4 style="text-align: center" class="m-3">No Data</h4>
                                 @endif
                             </div>
                         </div>
@@ -153,20 +165,19 @@
                     <!--begin::Copyright-->
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-gray-400 fw-semibold me-1">2023&copy;</span>
-                        <a href="https://keenthemes.com" target="_blank"
-                            class="text-gray-400 text-hover-primary">Keenthemes</a>
+                        <a href="/" target="_blank" class="text-gray-400 text-hover-primary">Keenthemes</a>
                     </div>
                     <!--end::Copyright-->
                     <!--begin::Menu-->
                     <ul class="menu menu-gray-400 menu-hover-primary fw-semibold order-1">
                         <li class="menu-item">
-                            <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+                            <a href="/" target="_blank" class="menu-link px-2">About</a>
                         </li>
                         <li class="menu-item">
-                            <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+                            <a href="/" target="_blank" class="menu-link px-2">Support</a>
                         </li>
                         <li class="menu-item">
-                            <a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+                            <a href="/" target="_blank" class="menu-link px-2">Purchase</a>
                         </li>
                     </ul>
                     <!--end::Menu-->

@@ -17,6 +17,7 @@ class Product extends Model
         'type',
         'speed',
         'transmition',
+        'color',
         'fuel',
         'years_output',
         'description',

@@ -28,9 +28,9 @@ class CompanyController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create_company()
+    public function index_about()
     {
-
+        return view('index-about');
     }
 
     /**
