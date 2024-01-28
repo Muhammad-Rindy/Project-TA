@@ -122,7 +122,7 @@
                                     Profile</a>
                             </div>
                             <div class="menu-item px-5">
-                                <a href="{{ route('create-company') }}" class="menu-link px-5">
+                                <a href="{{ route('index-company') }}" class="menu-link px-5">
                                     <span class="menu-text">My Company</span>
                                 </a>
                             </div>

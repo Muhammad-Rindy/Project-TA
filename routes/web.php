@@ -27,10 +27,10 @@ Auth::routes();
 Route::get('/register', [RegisterController::class, 'index'])->name('register');
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/', [ProductController::class, 'index_product'])->name('index-product');
-Route::get('/create-company', [CompanyController::class, 'create_company'])->name('create-company');
+Route::get('/company', [CompanyController::class, 'index_company'])->name('index-company');
 
 
-Route::middleware(['admin'])->group(function() {
+Route::middleware(['admin'])->group(function () {
     Route::post('/store/products', [ProductController::class, 'store_product'])->name('store-product');
     Route::post('/store/company', [CompanyController::class, 'store_company'])->name('store-company');
-    });
+});

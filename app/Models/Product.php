@@ -12,8 +12,12 @@ class Product extends Model
 
     protected $table = 'products';
     protected $fillable = [
-        'name',
-        'color',
+        'model',
+        'merk',
+        'type',
+        'speed',
+        'transmition',
+        'fuel',
         'years_output',
         'description',
         'company_id',
@@ -30,7 +34,7 @@ class Product extends Model
     }
 
 
-    public function products()
+    public function company()
     {
         return $this->belongsTo(Company::class);
     }

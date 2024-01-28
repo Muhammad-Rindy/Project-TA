@@ -115,33 +115,34 @@
                         </div>
                         <div class="row row-cols-1 g-4">
                             <div class="card mb-3">
-
-                                @if ($companies->isEmpty())
-                                    <h4 style="text-align: center" class="m-5">NO DATA</h4>
-                                @else
-                                    @foreach ($companies as $company)
-                                        <img src="{{ asset('storage/' . $company->image) }}" class="card-img-top mt-2"
+                                @if ($companies)
+                                    @if ($companies->count() === null)
+                                        <p>Belum ada perusahaan.</p>
+                                    @else
+                                        <img src="{{ asset('storage/' . $companies->image) }}" class="card-img-top mt-2"
                                             alt="Product Image">
                                         <div class="card-body">
-                                            <h2 class="card-title" style="text-align: center">{{ $company->name }}</h2>
+                                            <h2 class="card-title" style="text-align: center">{{ $companies->name }}</h2>
                                             <hr>
-                                            <p class="card-text" style="text-align: justify">{{ $company->description }}
+                                            <p class="card-text" style="text-align: justify">{{ $companies->description }}
                                             </p>
                                             <br>
                                             <h4>Untuk Info Lebih Lanjut, Silahkan Hubungi Kami :</h4>
                                             <br>
                                             <h5 class="card-title">Email : <span
-                                                    style="font-style:italic">{{ $company->email }}</span></h5>
+                                                    style="font-style:italic">{{ $companies->email }}</span></h5>
                                             <h5 class="card-title">Call Center : <span
-                                                    style="font-style: italic">{{ $company->number_phone }}</span></h5>
+                                                    style="font-style: italic">{{ $companies->number_phone }}</span></h5>
 
                                             <hr>
                                             <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
                                                     ago</small></p>
-                                            <h5 class="card-title" style="font-style:initial">📍 {{ $company->address }}
+                                            <h5 class="card-title" style="font-style:initial">📍 {{ $companies->address }}
                                             </h5>
                                         </div>
-                                    @endforeach
+                                    @endif
+                                @else
+                                    <h4 style="text-align: center" class="m-2">No Company</h4>
                                 @endif
                             </div>
                         </div>

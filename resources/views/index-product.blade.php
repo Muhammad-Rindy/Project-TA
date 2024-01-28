@@ -131,61 +131,82 @@
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
                                                         aria-label="Close"></button>
                                                 </div>
-                                                @if ($userCompanies->isEmpty())
+                                                @if ($companies)
+                                                    @if ($companies->count() === null)
+                                                        <p>Nothing</p>
+                                                    @else
+                                                        <form action="{{ route('store-product') }}" method="post"
+                                                            enctype="multipart/form-data">
+                                                            <div class="modal-body">
+                                                                @csrf
+                                                                <select name="company_id" class="form-select"
+                                                                    aria-label="Default select example" type="hidden"
+                                                                    required>
+                                                                    <option value="{{ $companies->id }}">
+                                                                        {{ $companies->name }}
+                                                                    </option>
+                                                                </select>
+                                                                <label for="merk" class="form-label">Brand</label>
+                                                                <input type="text" id="merk" name="merk"
+                                                                    class="form-control" aria-describedby="name" required>
+                                                                <label for="model" class="form-label">Model</label>
+                                                                <input type="text" id="model" name="model"
+                                                                    class="form-control" aria-describedby="name" required>
+                                                                <label for="type" class="form-label">Type</label>
+                                                                <input type="text" id="type" name="type"
+                                                                    class="form-control" aria-describedby="name" required>
+                                                                <label for="speed" class="form-label">Speed</label>
+                                                                <input type="text" id="speed" name="speed"
+                                                                    class="form-control" aria-describedby="name" required>
+                                                                <select name="transmition" class="form-select"
+                                                                    aria-label="Default select example" type="hidden"
+                                                                    required>
+                                                                    <option value="AT / Automatic Gear">AT</option>
+                                                                    <option value="MT / Manual Gear">MT</option>
+                                                                </select>
+                                                                <label for="fuel" class="form-label">Fuel</label>
+                                                                <input type="text" id="fuel" name="fuel"
+                                                                    class="form-control" aria-describedby="name" required>
+                                                                <label for="years_output" class="form-label">Years Output
+                                                                    Product</label>
+                                                                <input type="number" name="years_output"
+                                                                    id="years_output" class="form-control"
+                                                                    aria-describedby="passwordHelpBlock" required>
+                                                                <label for="color" class="form-label">Color</label>
+                                                                <input type="text" id="color" name="color"
+                                                                    class="form-control" aria-describedby="text" required>
+                                                                <label for="description" class="form-label">Description
+                                                                    Product</label>
+                                                                <input type="text" name="description" id="description"
+                                                                    class="form-control"
+                                                                    aria-describedby="passwordHelpBlock" required>
+                                                                <label for="location" class="form-label">Location</label>
+                                                                <input type="text" name="location" id="location"
+                                                                    class="form-control"
+                                                                    aria-describedby="passwordHelpBlock" required>
+                                                                <label for="price" class="form-label">Price</label>
+                                                                <input type="number" id="price" name="price"
+                                                                    class="form-control"
+                                                                    aria-describedby="passwordHelpBlock" required>
+                                                                <label for="image" class="form-label">Upload
+                                                                    Image</label>
+                                                                <input type="file" name="image" id="image"
+                                                                    class="form-control"
+                                                                    aria-describedby="passwordHelpBlock" required>
+                                                                <div class="modal-footer">
+                                                                    <button type="button"
+                                                                        class="btn btn-secondary btn-sm"
+                                                                        data-bs-dismiss="modal">Close</button>
+                                                                    <button type="submit"
+                                                                        class="btn btn-primary btn-sm">Save</button>
+                                                                </div>
+                                                        </form>
+                                                    @endif
+                                                @else
                                                     <div class="alert alert-danger"
                                                         style="margin: 15px 30px; text-align:center">
                                                         Your not have company. Please create a company first!
                                                     </div>
-                                                @else
-                                                    <form action="{{ route('store-product') }}" method="post"
-                                                        enctype="multipart/form-data">
-                                                        <div class="modal-body">
-                                                            @csrf
-                                                            <label for="company_id" class="form-label">Company:</label>
-                                                            <select name="company_id" class="form-select"
-                                                                aria-label="Default select example" required>
-                                                                @foreach ($userCompanies as $company)
-                                                                    <option value="{{ $company->id }}">{{ $company->name }}
-                                                                    </option>
-                                                                @endforeach
-                                                            </select>
-
-
-                                                            <label for="name" class="form-label">Name Product</label>
-                                                            <input type="text" id="name" name="name"
-                                                                class="form-control" aria-describedby="name" required>
-                                                            <label for="years_output" class="form-label">Years Output
-                                                                Product</label>
-                                                            <input type="number" name="years_output" id="years_output"
-                                                                class="form-control" aria-describedby="passwordHelpBlock"
-                                                                required>
-                                                            <label for="color" class="form-label">Color</label>
-                                                            <input type="text" id="color" name="color"
-                                                                class="form-control" aria-describedby="text" required>
-                                                            <label for="description" class="form-label">Description
-                                                                Product</label>
-                                                            <input type="text" name="description" id="description"
-                                                                class="form-control" aria-describedby="passwordHelpBlock"
-                                                                required>
-                                                            <label for="location" class="form-label">Location</label>
-                                                            <input type="text" name="location" id="location"
-                                                                class="form-control" aria-describedby="passwordHelpBlock"
-                                                                required>
-                                                            <label for="price" class="form-label">Price</label>
-                                                            <input type="number" id="price" name="price"
-                                                                class="form-control" aria-describedby="passwordHelpBlock"
-                                                                required>
-                                                            <label for="image" class="form-label">Upload Image</label>
-                                                            <input type="file" name="image" id="image"
-                                                                class="form-control" aria-describedby="passwordHelpBlock"
-                                                                required>
-                                                            <div class="modal-footer">
-                                                                <button type="button" class="btn btn-secondary btn-sm"
-                                                                    data-bs-dismiss="modal">Close</button>
-                                                                <button type="submit"
-                                                                    class="btn btn-primary btn-sm">Save</button>
-                                                            </div>
-                                                    </form>
                                                 @endif
                                             </div>
                                         </div>
@@ -202,6 +223,13 @@
                                         <div class="card-body">
                                             <h2 class="card-title">{{ $product->name }} - {{ $product->years_output }}</h2>
                                             <p class="card-text">{{ $product->description }}</p>
+                                            <hr>
+                                            <p class="card-text">Brand : {{ $product->merk }}</p>
+                                            <p class="card-text">Model : {{ $product->model }}</p>
+                                            <p class="card-text">Type : {{ $product->type }}</p>
+                                            <p class="card-text">Transmition : {{ $product->transmition }}</p>
+                                            <p class="card-text">Vehicle fuel : {{ $product->fuel }}</p>
+                                            <hr>
                                             <p>Location : {{ $product->location }}</p>
                                             <h4>Price: Rp.{{ number_format($product->price, 2, ',', '.') }}</h4>
                                         </div>

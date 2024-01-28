@@ -18,7 +18,9 @@ class CompanyController extends Controller
      */
     public function index_company()
     {
+        $companies = auth()->user()->companies;
 
+        return view('index-company', compact('companies'));
     }
 
     /**
@@ -28,9 +30,7 @@ class CompanyController extends Controller
      */
     public function create_company()
     {
-        $companies = Company::all();
 
-        return view('index-company', compact('companies'));
     }
 
     /**

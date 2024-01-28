@@ -11,8 +11,10 @@ class Company extends Model
 
     protected $table = 'companys';
     protected $fillable = [
+        'id',
         'name',
         'email',
+        'user_id',
         'address',
         'description',
         'number_phone',
@@ -21,7 +23,7 @@ class Company extends Model
 
     public function users()
     {
-    return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);
     }
     public function products()
     {
