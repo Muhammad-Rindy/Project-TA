@@ -28,7 +28,7 @@
                 <div class="d-flex flex-stack flex-wrap flex-lg-nowrap flex-row-fluid gap-4 gap-lg-10 mb-10">
                     <!--begin::Heading-->
                     <div class="d-flex align-items-center me-3">
-                        <img alt="Logo" src="assets/media/svg/misc/layer.svg" class="h-60px me-5" />
+                        <img alt="Logo" src="{{ asset('assets/media/svg/misc/layer.svg') }}" class="h-60px me-5" />
                         <!--begin::Title-->
                         <h1 class="page-heading d-flex text-white fw-bolder fs-2 flex-column justify-content-center my-0">
                             CodeLab - Devs Team
@@ -165,11 +165,18 @@
                                                                         {{ $companies->name }}
                                                                     </option>
                                                                 </select>
+                                                                <input type="text" id="status" value="1"
+                                                                    name="status" class="form-control"
+                                                                    aria-describedby="name" style="display: none" required>
                                                                 <label for="merk" class="form-label">Brand</label>
                                                                 <input type="text" id="merk" name="merk"
                                                                     class="form-control" aria-describedby="name" required>
                                                                 <label for="model" class="form-label">Model</label>
                                                                 <input type="text" id="model" name="model"
+                                                                    class="form-control" aria-describedby="name" required>
+                                                                <label for="plat" class="form-label">Number
+                                                                    police</label>
+                                                                <input type="text" id="plat" name="plat"
                                                                     class="form-control" aria-describedby="name" required>
                                                                 <label for="type" class="form-label">Type</label>
                                                                 <input type="text" id="type" name="type"
@@ -216,10 +223,7 @@
                                                                 <input type="file" name="image" id="image"
                                                                     class="form-control"
                                                                     aria-describedby="passwordHelpBlock" required>
-                                                                <input type="number" name="status" id="status"
-                                                                    class="form-control" value="1"
-                                                                    aria-describedby="passwordHelpBlock" type="hidden"
-                                                                    required>
+
                                                                 <div class="modal-footer">
                                                                     <button type="button"
                                                                         class="btn btn-secondary btn-sm"
@@ -251,7 +255,7 @@
 
                                             <div class="row">
                                                 <div class="col">
-                                                    <h2 class="card-title">{{ $product->model }} -
+                                                    <h2 class="card-title">{{ $product->merk }} {{ $product->model }} -
                                                         {{ $product->years_output }}</h2>
                                                 </div>
                                                 <div class="col" style="text-align: end">
@@ -268,26 +272,24 @@
                                             <p class="card-text" style="text-align: justify">{{ $product->description }}
                                             </p>
                                             <hr>
-                                            <h3>Price: Rp.{{ number_format($product->price, 2, ',', '.') }}</h3>
-                                            <p class="card-text">Brand : {{ $product->merk }}</p>
-                                            @if ($product->type == 0)
-                                                <p class="card-text">Type : - </p>
-                                            @else
-                                                <p class="card-text">Type : {{ $product->type }}</p>
-                                            @endif
+                                            <h3>Rp. {{ number_format($product->price, 2, ',', '.') }} / day</h3>
                                             <p class="card-text">Transmition : {{ $product->transmition }}</p>
-                                            <p class="card-text">Vehicle fuel : {{ $product->fuel }}</p>
                                             <p>📍 Location : {{ $product->location }}</p>
                                             <hr>
                                         </div>
-                                        <div class="d-grid gap-2 col-6 mx-auto mb-5">
-                                            @if ($product->status == 1)
-                                                <a href="/" class="btn btn-primary btn-sm">Booking now</a>
-                                            @else
-                                                <a href="/" class="btn btn-secondary btn-sm disabled">Currently
-                                                    booked</a>
-                                            @endif
-                                        </div>
+                                        @if ($product->status == 1)
+                                            <form action="{{ route('show-product', $product) }}" method="get">
+                                                <div class="d-grid gap-2 col-6 mx-auto mb-5">
+                                                    <button type="submit" class="btn btn-primary btn-sm">Booking
+                                                        now</button>
+                                                </div>
+                                            </form>
+                                        @else
+                                            <div class="d-grid gap-2 col-6 mx-auto mb-5">
+                                                <button type="button" class="btn btn-secondary btn-sm disabled">Currently
+                                                    booked</button>
+                                            </div>
+                                        @endif
                                         <div class="card-footer">
                                             @if ($product->company)
                                                 <small class="text-body-secondary">{{ $product->company->name }}</small>

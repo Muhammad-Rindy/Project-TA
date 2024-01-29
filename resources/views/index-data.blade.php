@@ -58,11 +58,11 @@
                                     <th style="text-align: center; vertical-align:middle">No</th>
                                     <th style="text-align: center; vertical-align:middle">Model</th>
                                     <th style="text-align: center; vertical-align:middle">Merk</th>
+                                    <th style="text-align: center; vertical-align:middle">Number Police</th>
                                     <th style="text-align: center; vertical-align:middle">Transmition</th>
                                     <th style="text-align: center; vertical-align:middle">Color</th>
                                     <th style="text-align: center; vertical-align:middle">Years</th>
                                     <th style="text-align: center; vertical-align:middle">Price</th>
-                                    <th style="text-align: center; vertical-align:middle">Created_at</th>
                                     <th style="text-align: center; vertical-align:middle">Status</th>
                                     <th style="text-align: center; vertical-align:middle">Action</th>
                                 </tr>
@@ -72,6 +72,8 @@
                                         <td style="text-align: center; vertical-align:middle">{{ $loop->iteration }}</td>
                                         <td style="text-align: center; vertical-align:middle">{{ $product->model }}</td>
                                         <td style="text-align: center; vertical-align:middle">{{ $product->merk }}</td>
+                                        <td style="text-align: center; vertical-align:middle">{{ $product->plat }}
+                                        </td>
                                         <td style="text-align: center; vertical-align:middle">{{ $product->transmition }}
                                         </td>
                                         <td style="text-align: center; vertical-align:middle">{{ $product->color }}</td>
@@ -79,8 +81,6 @@
                                         </td>
                                         <td style="text-align: center; vertical-align:middle">
                                             Rp. {{ number_format($product->price, 2, ',', '.') }}</td>
-                                        <td style="text-align: center; vertical-align:middle">{{ $product->created_at }}
-                                        </td>
                                         <td style="text-align: center; vertical-align:middle">
                                             @if ($product->status == 1)
                                                 <span class="badge badge-light-success fw-bold text-span">Available</span>
@@ -122,6 +122,7 @@
                                                                         method="post" enctype="multipart/form-data">
                                                                         @method('patch')
                                                                         @csrf
+
                                                                         <div style="text-align: left">
                                                                             <label for="site"
                                                                                 class="form-label">Model</label>
@@ -139,11 +140,19 @@
                                                                             aria-label="default input example"
                                                                             value="{{ $product->merk }}">
                                                                         <div style="text-align: left">
+                                                                            <label for="plat" class="form-label">Number
+                                                                                Police</label>
+                                                                        </div>
+                                                                        <input class="form-control mt-1 mb-3" type="text"
+                                                                            name="plat"
+                                                                            aria-label="default input example"
+                                                                            value="{{ $product->plat }}">
+                                                                        <div style="text-align: left">
                                                                             <label for="site"
                                                                                 class="form-label">Type</label>
                                                                         </div>
-                                                                        <input class="form-control mt-1 mb-3" type="text"
-                                                                            name="type"
+                                                                        <input class="form-control mt-1 mb-3"
+                                                                            type="text" name="type"
                                                                             aria-label="default input example"
                                                                             value="{{ $product->type }}">
 
@@ -163,17 +172,19 @@
                                                                             aria-label="Default select example"
                                                                             name="transmition">
                                                                             <option selected>
-                                                                                @if ($product->transmition == 'AT')
+                                                                                @if ($product->transmition == 'AT / Automatic Gear')
                                                                                     AT / Automatic Gear
                                                                                 @else
                                                                                     MT / Manual Gear
                                                                                 @endif
                                                                             </option>
-                                                                            @if ($product->transmition == 'AT')
-                                                                                <option value="MT">MT / Manual Gear
+                                                                            @if ($product->transmition == 'AT / Automatic Gear')
+                                                                                <option value="MT / Manual Gear">MT /
+                                                                                    Manual Gear
                                                                                 </option>
                                                                             @else
-                                                                                <option value="AT">AT / Automatic Gear
+                                                                                <option value="AT / Automatic Gear">AT /
+                                                                                    Automatic Gear
                                                                                 </option>
                                                                             @endif
                                                                         </select>
@@ -250,6 +261,14 @@
                                                                                 </option>
                                                                             @endif
                                                                         </select>
+                                                                        <div style="text-align: left">
+                                                                            <label for="created_at"
+                                                                                class="form-label">Created at</label>
+                                                                        </div>
+                                                                        <input class="form-control mt-1 mb-3"
+                                                                            type="text" name="created_at"
+                                                                            aria-label="default input example"
+                                                                            value="{{ $product->created_at }}" readonly>
                                                                 </div>
                                                             </div>
                                                             <hr>

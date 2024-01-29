@@ -61,6 +61,7 @@ class ProductController extends Controller
             'merk' => 'required',
             'type' => 'required',
             'speed' => 'required',
+            'plat' => 'required',
             'transmition' => 'required',
             'status' => 'required',
             'fuel' => 'required',
@@ -78,6 +79,7 @@ class ProductController extends Controller
                 'model' => $request->model,
                 'merk' => $request->merk,
                 'type' => $request->type,
+                'plat' => $request->plat,
                 'status' => $request->status,
                 'speed' => $request->speed,
                 'transmition' => $request->transmition,
@@ -103,6 +105,7 @@ class ProductController extends Controller
             'speed' => 'required',
             'transmition' => 'required',
             'fuel' => 'required',
+            'plat' => 'required',
             'status' => 'required',
             'color' => 'required',
             'years_output' => 'required',
@@ -125,6 +128,7 @@ class ProductController extends Controller
                 'model' => $request->model,
                 'merk' => $request->merk,
                 'type' => $request->type,
+                'plat' => $request->plat,
                 'speed' => $request->speed,
                 'status' => $request->status,
                 'transmition' => $request->transmition,
@@ -143,16 +147,15 @@ class ProductController extends Controller
     }
 
 
-
     /**
      * Display the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show_product(Product $product)
     {
-        //
+        return view('show-product', compact('product'));
     }
 
     /**

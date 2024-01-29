@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('merk');
             $table->string('type')->nullable();
             $table->string('speed');
+            $table->string('plat');
             $table->string('transmition');
             $table->string('fuel');
             $table->tinyInteger('status');

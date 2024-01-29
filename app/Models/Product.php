@@ -15,6 +15,7 @@ class Product extends Model
         'model',
         'merk',
         'type',
+        'plat',
         'speed',
         'status',
         'transmition',
@@ -39,6 +40,11 @@ class Product extends Model
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class);
     }
 
 }

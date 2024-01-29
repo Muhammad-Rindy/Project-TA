@@ -19,8 +19,9 @@
             <!--begin::Logo-->
             <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
                 <a href="../../demo45/dist/index.html">
-                    <img alt="Logo" src="assets/media/logos/default-dark.svg" class="h-25px d-none d-lg-inline" />
-                    <img alt="Logo" src="assets/media/logos/default-small-dark.svg"
+                    <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.svg') }}"
+                        class="h-25px d-none d-lg-inline" />
+                    <img alt="Logo" src="{{ asset('assets/media/logos/default-small-dark.svg') }}"
                         class="h-25px d-inline d-lg-none" />
                 </a>
             </div>
@@ -103,7 +104,8 @@
                         <div class="cursor-pointer symbol symbol-35px"
                             data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent"
                             data-kt-menu-placement="bottom-end">
-                            <img class="symbol symbol-35px" src="assets/media/avatars/300-1.jpg" alt="user" />
+                            <img class="symbol symbol-35px" src="{{ asset('assets/media/avatars/300-1.jpg') }}"
+                                alt="user" />
                         </div>
                         <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg menu-state-color fw-semibold py-4 fs-6 w-275px"
                             data-kt-menu="true">
@@ -120,14 +122,19 @@
                             </div>
                             <div class="separator my-2"></div>
                             <div class="menu-item px-5">
-                                <a href="../../demo45/dist/account/overview.html" class="menu-link px-5">My
+                                <a href="" class="menu-link px-5">My
                                     Profile</a>
                             </div>
+
                             <div class="menu-item px-5">
                                 <a href="{{ route('index-company') }}" class="menu-link px-5">
                                     <span class="menu-text">Details Company</span>
                                 </a>
                             </div>
+                            <div class="menu-item px-5">
+                                <a href="{{ route('index-order') }}" class="menu-link px-5">Customer Orders</a>
+                            </div>
+
                             <div class="separator my-2"></div>
                             <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"
                                 data-kt-menu-placement="left-start" data-kt-menu-offset="-15px, 0">
