@@ -63,6 +63,7 @@
                                     <th style="text-align: center; vertical-align:middle">Years</th>
                                     <th style="text-align: center; vertical-align:middle">Price</th>
                                     <th style="text-align: center; vertical-align:middle">Created_at</th>
+                                    <th style="text-align: center; vertical-align:middle">Status</th>
                                     <th style="text-align: center; vertical-align:middle">Action</th>
                                 </tr>
                             <tbody>
@@ -76,8 +77,17 @@
                                         <td style="text-align: center; vertical-align:middle">{{ $product->color }}</td>
                                         <td style="text-align: center; vertical-align:middle">{{ $product->years_output }}
                                         </td>
-                                        <td style="text-align: center; vertical-align:middle">{{ $product->price }}</td>
+                                        <td style="text-align: center; vertical-align:middle">
+                                            Rp. {{ number_format($product->price, 2, ',', '.') }}</td>
                                         <td style="text-align: center; vertical-align:middle">{{ $product->created_at }}
+                                        </td>
+                                        <td style="text-align: center; vertical-align:middle">
+                                            @if ($product->status == 1)
+                                                <span class="badge badge-light-success fw-bold text-span">Available</span>
+                                            @else
+                                                <span class="badge badge-light-warning fw-bold text-span">Not
+                                                    Available</span>
+                                            @endif
                                         </td>
                                         <td style="text-align: center; vertical-align:middle">
                                             <div class="row">
@@ -88,7 +98,7 @@
                                                     </button></div>
                                                 <div class="col p-0 m-0">
                                                     <form action="{{ route('delete-product', $product) }}"
-                                                        style="margin: 0px -11px 0px -23px" method="post">
+                                                        style="margin: 0px -5px 0px -17px" method="post">
                                                         @method('delete')
                                                         @csrf
                                                         <button type="submit" class="btn btn-danger btn-sm">Delete</button>
@@ -152,10 +162,20 @@
                                                                         <select class="form-select mt-1 mb-1"
                                                                             aria-label="Default select example"
                                                                             name="transmition">
-                                                                            <option selected>{{ $product->transmition }}
+                                                                            <option selected>
+                                                                                @if ($product->transmition == 'AT')
+                                                                                    AT / Automatic Gear
+                                                                                @else
+                                                                                    MT / Manual Gear
+                                                                                @endif
                                                                             </option>
-                                                                            <option value="AT / Automatic Gear">AT</option>
-                                                                            <option value="MT / Manual Gear">MT</option>
+                                                                            @if ($product->transmition == 'AT')
+                                                                                <option value="MT">MT / Manual Gear
+                                                                                </option>
+                                                                            @else
+                                                                                <option value="AT">AT / Automatic Gear
+                                                                                </option>
+                                                                            @endif
                                                                         </select>
                                                                         <div style="text-align: left">
                                                                             <label for="name"
@@ -205,7 +225,31 @@
                                                                             type="number" name="price"
                                                                             aria-label="default input example"
                                                                             value="{{ $product->price }}">
+                                                                        <div style="text-align: left">
+                                                                            <label for="site"
+                                                                                class="form-label">Status</label>
+                                                                        </div>
+                                                                        <select class="form-select mt-1 mb-1"
+                                                                            aria-label="Default select example"
+                                                                            name="status">
+                                                                            @if ($product->status == '1')
+                                                                                <option value="1" selected>
+                                                                                    Available
+                                                                                </option>
+                                                                            @else
+                                                                                <option value="0" selected>
+                                                                                    Not Available
+                                                                                </option>
+                                                                            @endif
 
+                                                                            @if ($product->status == '1')
+                                                                                <option value="0"> Not Available
+                                                                                </option>
+                                                                            @elseif($product->status == '0')
+                                                                                <option value="1"> Available
+                                                                                </option>
+                                                                            @endif
+                                                                        </select>
                                                                 </div>
                                                             </div>
                                                             <hr>

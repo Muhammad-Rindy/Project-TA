@@ -16,6 +16,7 @@ class Product extends Model
         'merk',
         'type',
         'speed',
+        'status',
         'transmition',
         'color',
         'fuel',

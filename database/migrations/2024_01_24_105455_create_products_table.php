@@ -20,9 +20,10 @@ return new class extends Migration {
             $table->string('speed');
             $table->string('transmition');
             $table->string('fuel');
+            $table->tinyInteger('status');
             $table->string('color');
             $table->string('years_output');
-            $table->string('description');
+            $table->longText('description');
             $table->string('location');
             $table->foreignId('company_id')->constrained('companys')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('price');

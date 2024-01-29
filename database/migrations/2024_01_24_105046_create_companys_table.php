@@ -17,7 +17,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('email')->unique();
             $table->string('address');
-            $table->string('description', 1000);
+            $table->longText('description');
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('number_phone');
             $table->string('image');

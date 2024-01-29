@@ -161,7 +161,7 @@
                             consectetur adipisicing elit. Veritatis nisi excepturi, corporis rem vero molestiae sunt
                             mollitia assumenda et vel quaerat deleniti recusandae officiis nihil nemo. Sit iure consequatur
                             deleniti!</h5>
-                        <h1 style="text-align: center" class="mt-5">Thank you for using our services</h1>
+                        <h1 style="text-align: center" class="mt-5">Thank you for using our services.</h1>
                     </div>
                     <div id="kt_app_footer"
                         class="app-footer d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4">

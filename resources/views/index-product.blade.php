@@ -117,7 +117,7 @@
                                     <!--begin::Title-->
                                     <h1
                                         class="page-heading d-flex flex-column justify-content-center text-dark fw-bolder fs-1 m-0">
-                                        Currently Available
+                                        Recommended products
                                         <!--begin::Description-->
                                         <span class="page-desc text-muted fs-7 fw-semibold"></span>
                                         <!--end::Description-->
@@ -216,6 +216,10 @@
                                                                 <input type="file" name="image" id="image"
                                                                     class="form-control"
                                                                     aria-describedby="passwordHelpBlock" required>
+                                                                <input type="number" name="status" id="status"
+                                                                    class="form-control" value="1"
+                                                                    aria-describedby="passwordHelpBlock" type="hidden"
+                                                                    required>
                                                                 <div class="modal-footer">
                                                                     <button type="button"
                                                                         class="btn btn-secondary btn-sm"
@@ -244,8 +248,23 @@
                                         <img src="{{ asset('storage/' . $product->image) }}" height="375"
                                             class="card-img-top" alt="Product Image">
                                         <div style="padding: 15px 20px 0px 20px">
-                                            <h2 class="card-title">{{ $product->model }} - {{ $product->years_output }}
-                                            </h2>
+
+                                            <div class="row">
+                                                <div class="col">
+                                                    <h2 class="card-title">{{ $product->model }} -
+                                                        {{ $product->years_output }}</h2>
+                                                </div>
+                                                <div class="col" style="text-align: end">
+                                                    @if ($product->status == 1)
+                                                        <span
+                                                            class="badge badge-light-success fw-bold text-span">Available</span>
+                                                    @else
+                                                        <span class="badge badge-light-warning fw-bold text-span">Not
+                                                            Available</span>
+                                                    @endif
+                                                </div>
+                                            </div>
+
                                             <p class="card-text" style="text-align: justify">{{ $product->description }}
                                             </p>
                                             <hr>
@@ -262,7 +281,12 @@
                                             <hr>
                                         </div>
                                         <div class="d-grid gap-2 col-6 mx-auto mb-5">
-                                            <a href="/" class="btn btn-primary btn-sm">Booking now</a>
+                                            @if ($product->status == 1)
+                                                <a href="/" class="btn btn-primary btn-sm">Booking now</a>
+                                            @else
+                                                <a href="/" class="btn btn-secondary btn-sm disabled">Currently
+                                                    booked</a>
+                                            @endif
                                         </div>
                                         <div class="card-footer">
                                             @if ($product->company)
