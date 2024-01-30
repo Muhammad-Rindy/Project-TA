@@ -18,7 +18,7 @@
             <!--end::Header mobile toggle-->
             <!--begin::Logo-->
             <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
-                <a href="../../demo45/dist/index.html">
+                <a href="/">
                     <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.svg') }}"
                         class="h-25px d-none d-lg-inline" />
                     <img alt="Logo" src="{{ asset('assets/media/logos/default-small-dark.svg') }}"
@@ -55,7 +55,7 @@
                                 <!--begin:Menu link-->
                                 <a @if (request()->is('product')) class="actives" @endif
                                     href="{{ route('index-data') }}" class="menu-header">List
-                                    Transportation</a>
+                                    Vehicle</a>
 
                             </div>
                             <!--end:Menu item-->

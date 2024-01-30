@@ -250,10 +250,12 @@
                                                 <input type="text" id="plat_rent" value="{{ $product->plat }}"
                                                     name="plat_rent" class="form-control" aria-describedby="name"
                                                     readonly>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary btn-sm"
+                                                <div style=text-align:end class="mt-5">
+                                                    <button style="border: solid gray 1px" type="button"
+                                                        class="btn btn-outline-secondary btn-sm"
                                                         data-bs-dismiss="modal">Close</button>
-                                                    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+                                                    <button type="submit" class="btn btn-primary btn-sm">Save
+                                                        changes</button>
                                                 </div>
                                         </form>
                                     </div>

@@ -1,5 +1,14 @@
 @extends('layouts.master')
 
+<style>
+    @media (min-width: 950px) {
+        .img-new {
+            height: 395px;
+        }
+
+    }
+</style>
+
 @section('content')
     @if (session('success'))
         <div id="live">
@@ -224,13 +233,15 @@
                                                                     class="form-control"
                                                                     aria-describedby="passwordHelpBlock" required>
 
-                                                                <div class="modal-footer">
-                                                                    <button type="button"
-                                                                        class="btn btn-secondary btn-sm"
+                                                                <div style=text-align:end class="mt-5">
+                                                                    <button style="border: solid gray 1px" type="button"
+                                                                        class="btn btn-outline-secondary btn-sm"
                                                                         data-bs-dismiss="modal">Close</button>
                                                                     <button type="submit"
-                                                                        class="btn btn-primary btn-sm">Save</button>
+                                                                        class="btn btn-primary btn-sm">Save
+                                                                        changes</button>
                                                                 </div>
+
                                                         </form>
                                                     @endif
                                                 @else
@@ -249,8 +260,8 @@
                             @foreach ($products as $product)
                                 <div class="col">
                                     <div class="card h-100">
-                                        <img src="{{ asset('storage/' . $product->image) }}" height="375"
-                                            class="card-img-top" alt="Product Image">
+                                        <img src="{{ asset('storage/' . $product->image) }}" class="card-img-top img-new"
+                                            alt="Product Image">
                                         <div style="padding: 15px 20px 0px 20px">
 
                                             <div class="row">
@@ -279,7 +290,7 @@
                                         </div>
                                         @if ($product->status == 1)
                                             <form action="{{ route('show-product', $product) }}" method="get">
-                                                <div class="d-grid gap-2 col-6 mx-auto mb-5">
+                                                <div class="d-grid gap-2 col-6 mx-auto">
                                                     <button type="submit" class="btn btn-primary btn-sm">Booking
                                                         now</button>
                                                 </div>
@@ -287,7 +298,8 @@
                                         @else
                                             <div class="d-grid gap-2 col-6 mx-auto mb-5">
                                                 <button type="button" class="btn btn-secondary btn-sm disabled">Currently
-                                                    booked</button>
+                                                    booked
+                                                </button>
                                             </div>
                                         @endif
                                         <div class="card-footer">
@@ -309,20 +321,19 @@
                     <!--begin::Copyright-->
                     <div class="text-dark order-2 order-md-1">
                         <span class="text-gray-400 fw-semibold me-1">2023&copy;</span>
-                        <a href="https://keenthemes.com" target="_blank"
-                            class="text-gray-400 text-hover-primary">Keenthemes</a>
+                        <a href="" target="_blank" class="text-gray-400 text-hover-primary">Keenthemes</a>
                     </div>
                     <!--end::Copyright-->
                     <!--begin::Menu-->
                     <ul class="menu menu-gray-400 menu-hover-primary fw-semibold order-1">
                         <li class="menu-item">
-                            <a href="https://keenthemes.com" target="_blank" class="menu-link px-2">About</a>
+                            <a href="" target="_blank" class="menu-link px-2">About</a>
                         </li>
                         <li class="menu-item">
-                            <a href="https://devs.keenthemes.com" target="_blank" class="menu-link px-2">Support</a>
+                            <a href="" target="_blank" class="menu-link px-2">Support</a>
                         </li>
                         <li class="menu-item">
-                            <a href="https://1.envato.market/EA4JP" target="_blank" class="menu-link px-2">Purchase</a>
+                            <a href="" target="_blank" class="menu-link px-2">Purchase</a>
                         </li>
                     </ul>
                     <!--end::Menu-->

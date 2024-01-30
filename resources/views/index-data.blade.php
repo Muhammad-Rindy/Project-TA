@@ -122,7 +122,6 @@
                                                                         method="post" enctype="multipart/form-data">
                                                                         @method('patch')
                                                                         @csrf
-
                                                                         <div style="text-align: left">
                                                                             <label for="site"
                                                                                 class="form-label">Model</label>
@@ -271,9 +270,8 @@
                                                                             value="{{ $product->created_at }}" readonly>
                                                                 </div>
                                                             </div>
-                                                            <hr>
-                                                            <div style=text-align:end>
-                                                                <button type="button"
+                                                            <div style=text-align:end class="mt-5">
+                                                                <button style="border: solid gray 1px" type="button"
                                                                     class="btn btn-outline-secondary btn-sm"
                                                                     data-dismiss="modal">Close</button>
                                                                 <button type="submit" class="btn btn-primary btn-sm">Save
