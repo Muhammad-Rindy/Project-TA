@@ -1,24 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-    @if (session('success'))
-        <div id="live">
-            <div class="check-alert">
-                <i class="far fa-check-circle color-alert"></i> &nbsp; &nbsp;
-                <span>Well Done! {{ session('success') }}</span>
-            </div>
-        </div>
-    @elseif ($errors->any())
-        @foreach ($errors->all() as $error)
-            <div id="live">
-                <div class="danger-alert">
-                    <i class="far fa-times-circle shine-alert"></i>
-                    &nbsp; &nbsp;
-                    <span>Wrong! {{ $error }}</span>
-                </div>
-            </div>
-        @endforeach
-    @endif
     <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
         <!--begin::Hero-->
         <div id="kt_app_hero" class="app-hero" style="margin-top: 50px">
@@ -96,7 +78,25 @@
             <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
                 <!--begin::Content wrapper-->
                 <div class="d-flex flex-column flex-column-fluid">
-                    <!--begin::Content-->
+                    @if (session('success'))
+                        <div id="live">
+                            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                <strong>Well Done! </strong>{{ session('success') }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                    aria-label="Close"></button>
+                            </div>
+                        </div>
+                    @elseif ($errors->any())
+                        @foreach ($errors->all() as $error)
+                            <div id="live">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    <strong>Wrong! {{ $error }}</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            </div>
+                        @endforeach
+                    @endif
                     <div id="kt_app_content" class="app-content">
                         <!--begin::Toolbar-->
                         <div id="kt_app_toolbar" class="app-toolbar d-flex flex-column py-6">

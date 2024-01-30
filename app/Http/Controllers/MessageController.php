@@ -36,7 +36,7 @@ class MessageController extends Controller
             'product_id' => $request->product_id,
         ]);
 
-        return Redirect::route('index-product');
+        return Redirect::back()->with('success', 'Thank you, the company will contact you within 1 x 24 hours');
 
     }
     public function index_order()

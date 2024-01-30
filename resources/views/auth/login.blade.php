@@ -27,81 +27,59 @@
     </script>
 </head>
 
-<body class="">
+<body class="main-bg">
     @if (session('error-login'))
         <div id="live">
-            <div class="danger-alert">
-                <i class="far fa-check-circle shine-alert"></i> &nbsp; &nbsp;
-                <span>Sorry! {{ session('error-login') }}</span>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Wrong!{{ session('error-login') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
     @endif
-    <div class="container-new">
-        <div class="left-side">
-            <div style="padding:10px 20px;width:500px">
-                <h5 style="font-family: fantasy">Sign In</h5>
-                <p>Your Social Campaigns</p>
-                <hr class="hr-text" data-content="Your Account">
-
-                <form method="POST" action="{{ route('login') }}">
-                    @csrf
-                    <div class="mb-3" style="text-align: left">
-                        <label for="exampleInputEmail1" class="form-label m-1">Email address</label>
-                        <input type="email" name="email"
-                            class="form-control input @error('email') is-invalid @enderror" id="exampleInputEmail1"
-                            aria-describedby="emailHelp">
-                        <div id="emailHelp" class="form-text m-1">We'll never share your email with anyone else.</div>
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="mb-3" style="text-align: left">
-                        <label for="exampleInputPassword1" class="form-label m-1">Password</label>
-                        <input type="password" name="password"
-                            class="form-control input @error('password') is-invalid @enderror"
-                            id="exampleInputPassword1">
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="mb-3 form-check" style="text-align: left">
-                        <input type="checkbox" class="form-check-input check {{ old('remember') ? 'checked' : '' }}"
-                            id="exampleCheck1">
-                        <label class="form-check-label" for="exampleCheck1">Keep me signed in</label>
-                    </div>
-                    <div class="d-grid gap-2 mt-5 mb-3">
-                        <button class="btn btn-primary mt-2" type="submit">Sign In</button>
-                    </div>
-                </form>
-                {{-- <div class="d-grid">
-                    <a class="btn btn-primary" href="{{ route('register') }}">Register</a>
-                </div> --}}
-            </div>
+    <div class="login-container text-c animated flipInX">
+        <div>
+            <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
         </div>
-        <div class="right-side">
-            <img src="{{ asset('alpha.png') }}" width="190px" height="190px" alt="no-image" style="margin: -25px 0px">
-            <div class="feedback">
-                <h4>Drop-off and Pickup Services</h4>
-                We value your <span style="color: #ff32f7"> feedback </span>and aim to provide you with the best
-                <span style="color: #ff32f7">experience</span>. Your thoughts are important to
-                us.Please feel free to share any concerns or <span style="color: #ff32f7"> suggestion </span> you may
-                have. Your feedback helps us improve
-                and
-                ensures that we continue to meet your expectations.
-                <br>
-                <br>
-                Thank you for taking the time to contact us.
-            </div>
+        <h3 class="text-whitesmoke">Sign In</h3>
+        <p class="text-whitesmoke">Your Social Campaigns</p>
+        <div class="container-content">
+            <form method="POST" action="{{ route('login') }}">
+                @csrf
+                <div class="form-group mt-4" style="text-align: left">
+                    <input type="email" name="email" input @error('email') is-invalid @enderror"
+                        id="exampleInputEmail1" aria-describedby="emailHelp" class="form-control form-new"
+                        placeholder="Your email ?" required>
+                    <div id="emailHelp" class="form-text m-1" style="color: gray">We'll never share your email with
+                        anyone else.</div>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group" style="text-align: left">
+                    <input type="password" input @error('password') is-invalid @enderror" id="exampleInputPassword1"
+                        name="password" class="form-control form-new" placeholder="********" required>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="mb-3 form-check" style="text-align: left">
+                    <input type="checkbox" class="form-check-input check {{ old('remember') ? 'checked' : '' }}"
+                        id="exampleCheck1">
+                    <label class="form-check-label" for="exampleCheck1" style="color: gray">Keep me signed in</label>
+                </div>
+
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary mt-3" type="submit">Sign In</button>
+                </div>
+            </form>
+            <p class="mt-3" style="color:gray"><small>&copy;Alpha, All rights reserved.</small>
+            </p>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>
