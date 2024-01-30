@@ -55,7 +55,7 @@
                                 <!--begin:Menu link-->
                                 <a @if (request()->is('product')) class="actives" @endif
                                     href="{{ route('index-data') }}" class="menu-header">List
-                                    Company</a>
+                                    Transportation</a>
 
                             </div>
                             <!--end:Menu item-->
@@ -63,8 +63,8 @@
                             <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                                 <!--begin:Menu link-->
                                 <a @if (request()->is('about')) class="actives" @endif
-                                    href="{{ route('index-about') }}" class="menu-header" style="margin-top:1.6px">About
-                                    Me</a>
+                                    href="{{ route('index-about') }}" class="menu-header">About Me
+                                </a>
                                 <!--end:Menu link-->
                                 <!--begin:Menu sub-->
 
@@ -122,7 +122,7 @@
                             </div>
                             <div class="separator my-2"></div>
                             <div class="menu-item px-5">
-                                <a href="" class="menu-link px-5">My
+                                <a href="{{ route('index-profile') }}" class="menu-link px-5">My
                                     Profile</a>
                             </div>
 

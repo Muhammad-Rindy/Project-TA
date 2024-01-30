@@ -47,11 +47,11 @@ class MessageController extends Controller
         return view('index-order', compact('messages'));
     }
 
-    public function update_order(Product $product, Request $request)
+
+    public function delete_order(Message $message)
     {
-
-
-        return Redirect::back()->with('success', 'Form submitted successfully');
+        $message->delete();
+        return Redirect::back()->with('success', 'Deleted successfully');
     }
 
 

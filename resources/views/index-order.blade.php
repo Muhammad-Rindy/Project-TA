@@ -70,22 +70,26 @@
                                         <td style="text-align: center; vertical-align:middle">{{ $message->email }}</td>
                                         <td style="text-align: center; vertical-align:middle">{{ $message->number_phone }}
                                         <td style="text-align: center; vertical-align:middle">
-                                            {{ $message->product->status }}</td>
+                                            @if ($message->product->status == 1)
+                                                <span class="badge badge-light-danger fw-bold text-span">Waiting
+                                                    Confirmation</span>
+                                            @else
+                                                <span class="badge badge-light-success fw-bold text-span">Accept</span>
+                                            @endif
                                         </td>
                                         <td style="text-align: center; vertical-align:middle">
                                             <div class="row">
                                                 <div class="col p-0 m-0"><button type="button"
                                                         class="btn btn-primary btn-sm" data-toggle="modal"
                                                         data-target="#editModal{{ $message->id }}">
-                                                        Edit
+                                                        Show
                                                     </button></div>
                                                 <div class="col p-0 m-0">
-                                                    <form action="{{ route('delete-product', $message) }}"
-                                                        style="margin: 0px -5px 0px -17px" method="post">
+                                                    <form action="{{ route('delete-order', $message) }}"
+                                                        style="margin: 0px -15px 0px -28px" method="post">
                                                         @method('delete')
                                                         @csrf
-                                                        <button type="submit" style="margin: 0px -17px 0px -22px"
-                                                            class="btn btn-danger btn-sm">Delete</button>
+                                                        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
                                                     </form>
                                                 </div>
                                             </div>
@@ -95,9 +99,7 @@
                                                     <div class="modal-content">
                                                         <div class="modal-header">
                                                             <h5 class="modal-title" id="exampleModalLabel">
-                                                                Update
-                                                                Order</h5>
-
+                                                                Details Order</h5>
                                                         </div>
                                                         <div class="modal-body">
                                                             <div class="container-fluid">
@@ -164,13 +166,10 @@
                                                                             aria-label="default input example"
                                                                             value="{{ $message->time_rent }} day"
                                                                             readonly>
-                                                                        <div class="mt-5" style="text-align:end">
+                                                                        <div class="mt-7" style="text-align:end">
                                                                             <button type="button"
-                                                                                class="btn btn-outline-secondary btn-sm"
+                                                                                class="btn btn-secondary btn-sm"
                                                                                 data-dismiss="modal">Close</button>
-                                                                            <button type="submit"
-                                                                                class="btn btn-primary btn-sm">Save
-                                                                                changes</button>
                                                                         </div>
                                                                     </form>
                                                                 </div>
