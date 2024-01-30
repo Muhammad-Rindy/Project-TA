@@ -87,7 +87,7 @@
                     <div class="app-navbar flex-shrink-0">
                         <div class="app-navbar-item ms-1 ms-lg-3" id="kt_header_user_menu_toggle">
                             <div class="cursor-pointer symbol symbol-35px">
-                                <a href="{{ route('login') }}" style="border: solid gray 1px; font-weight:bold"
+                                <a href="{{ route('login') }}" style="border: solid gray 1px; font-weight:bold; color:white"
                                     class="btn btn-outline-secondary btn-sm">Member</a>
                             </div>
                         </div>
