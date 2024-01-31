@@ -58,7 +58,7 @@
 
 <body id="kt_app_body" data-kt-app-header-fixed-mobile="true" data-kt-app-toolbar-enabled="true" class="app-default">
     <script>
-        var defaultThemeMode = "light";
+        var defaultThemeMode = "dark"; // Mengubah default ke "dark"
         var themeMode;
         if (document.documentElement) {
             if (document.documentElement.hasAttribute("data-bs-theme-mode")) {
@@ -76,6 +76,7 @@
             document.documentElement.setAttribute("data-bs-theme", themeMode);
         }
     </script>
+
 
     <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
         @include('layouts.header')
