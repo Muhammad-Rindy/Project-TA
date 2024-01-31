@@ -139,7 +139,6 @@
                         <div class="row row-cols-1 g-4">
                             <div class="card mb-3">
                                 @if (empty($companies))
-                                    <p style="text-align: center" class="m-3">Nothing Data.</p>
                                 @else
                                     <img src="{{ asset('storage/' . $companies->image) }}" class="card-img-top mt-2"
                                         alt="Product Image">

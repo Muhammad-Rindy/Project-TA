@@ -73,7 +73,6 @@
                                     </tr>
                                 <tbody>
                                     @if ($products->isEmpty())
-                                        <p style="text-align: center">Nothing Data.</p>
                                     @else
                                         @foreach ($products as $product)
                                             <tr>

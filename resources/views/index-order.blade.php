@@ -195,7 +195,6 @@
                                             </tr>
                                         @endforeach
                                     @else
-                                        <p style="text-align: center">Nothing Data.</p>
                                     @endif
                                 </tbody>
                                 </thead>

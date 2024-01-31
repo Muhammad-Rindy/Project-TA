@@ -126,7 +126,7 @@
 
                                             @if (Auth::user()->status == '1')
                                                 <span
-                                                    class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Verified</span>
+                                                    class="badge badge-light-success fw-bolder fs-8 px-2 py-1 ms-2">Verified</span>
                                             @else
                                                 <span class="badge badge-light-warning fw-bold fs-8 px-2 py-1 ms-2">Not
                                                     Verified</span>
