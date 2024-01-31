@@ -5,14 +5,14 @@
     <title>Alpha Rent</title>
     <meta charset="utf-8" />
     <meta name="description"
-        content="Alpha Rent -  Sebuah perusahaan rental kendaraan yang telah menyediakan solusi mobilitas yang handal dan efisien sejak didirikan. Sebagai pemimpin dalam industri ini, Alpha Rent menawarkan armada kendaraan terkini yang dirawat dengan baik, mulai dari mobil ekonomi hingga kendaraan mewah, memenuhi berbagai kebutuhan pelanggan dengan berbagai selera dan anggaran." />
+        content="Alpha Rent - Perusahaan rental kendaraan yang telah menyediakan solusi mobilitas yang handal dan efisien sejak didirikan. Sebagai pemimpin dalam industri ini, Alpha Rent menawarkan armada kendaraan terkini yang dirawat dengan baik, mulai dari mobil ekonomi hingga kendaraan mewah, memenuhi berbagai kebutuhan pelanggan dengan berbagai selera dan anggaran." />
     <meta name="keywords"
-        content="Alpha Rent -  Sebuah perusahaan rental kendaraan yang telah menyediakan solusi mobilitas yang handal dan efisien sejak didirikan. Sebagai pemimpin dalam industri ini, Alpha Rent menawarkan armada kendaraan terkini yang dirawat dengan baik, mulai dari mobil ekonomi hingga kendaraan mewah, memenuhi berbagai kebutuhan pelanggan dengan berbagai selera dan anggaran." />
+        content="Alpha Rent - Perusahaan rental kendaraan yang telah menyediakan solusi mobilitas yang handal dan efisien sejak didirikan. Sebagai pemimpin dalam industri ini, Alpha Rent menawarkan armada kendaraan terkini yang dirawat dengan baik, mulai dari mobil ekonomi hingga kendaraan mewah, memenuhi berbagai kebutuhan pelanggan dengan berbagai selera dan anggaran." />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="article" />
     <meta property="og:title"
-        content="Alpha Rent -  sebuah perusahaan rental kendaraan yang telah menyediakan solusi mobilitas yang handal dan efisien sejak didirikan. Sebagai pemimpin dalam industri ini, Alpha Rent menawarkan armada kendaraan terkini yang dirawat dengan baik, mulai dari mobil ekonomi hingga kendaraan mewah, memenuhi berbagai kebutuhan pelanggan dengan berbagai selera dan anggaran." />
+        content="Alpha Rent - Perusahaan rental kendaraan yang telah menyediakan solusi mobilitas yang handal dan efisien sejak didirikan. Sebagai pemimpin dalam industri ini, Alpha Rent menawarkan armada kendaraan terkini yang dirawat dengan baik, mulai dari mobil ekonomi hingga kendaraan mewah, memenuhi berbagai kebutuhan pelanggan dengan berbagai selera dan anggaran." />
     <meta property="og:url" content="https://rent-alpha.com/" />
     <meta property="og:site_name" content="Alpha | Rent Batam" />
     <link rel="canonical" href="https://rent-alpha.com/" />
