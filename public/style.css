@@ -39,6 +39,14 @@
 
 
 }
+.logo {
+        font-size: 30px;
+        font-family: initial;
+        font-weight: bold;
+        color: white;
+        vertical-align: middle;
+        margin: 5px;
+    }
 
 
 
