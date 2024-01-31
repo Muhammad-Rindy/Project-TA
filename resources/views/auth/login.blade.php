@@ -69,7 +69,7 @@
                         id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1" style="color: gray">Keep me signed in</label>
                 </div>
-                <div class="mt-3 mb-3" style="color: white">Don't have an account ? <a style="text-decoration: none"
+                <div class="mt-5 mb-3" style="color: white">Don't have an account ? <a style="text-decoration: none"
                         href="{{ route('register') }}">Sign up</a></div>
                 <div class="d-grid gap-2">
                     <button class="btn btn-primary mt-3" type="submit">Sign In</button>
