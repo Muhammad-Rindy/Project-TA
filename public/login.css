@@ -157,7 +157,7 @@ body {
 /* Container */
 
 .container-content {
-    background-color: #2d25c529;
+    background-color: #19156ba1;
     color: inherit;
     padding: 30px 20px 45px 20px;
     border: #216cff solid 3px;
@@ -174,7 +174,9 @@ body {
 }
 
 .main-bg {
-    background: #081e61;
+    background-color: #0b2873;
+background-image: linear-gradient(225deg, #0b2873 0%, #1a29d1 50%, #0e1d60 100%);
+
 }
 
 /* Login & Register Pages*/
@@ -195,21 +197,21 @@ body {
 }
 
 @media only screen and (max-width: 850px) {
-  #live {
-    font-weight: bold;
-    position:fixed;
-    bottom: 77px;
-    width: auto;
-    right: 0px;
-    margin: 10px;
-    cursor: pointer;
-    z-index: 9999;
-    font-size: 15px;
+    #live {
+        font-weight: bold;
+        position:fixed;
+        bottom: 77px;
+        width: auto;
+        right: 0px;
+        margin: 10px;
+        cursor: pointer;
+        z-index: 9999;
+        font-size: 15px;
 
 
 
 
-}
+    }
 }
 
 .login-container {

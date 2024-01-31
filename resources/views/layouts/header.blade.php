@@ -19,8 +19,8 @@
             <!--begin::Logo-->
             <div class="d-flex align-items-center flex-grow-1 flex-lg-grow-0 me-lg-15">
                 <a href="/">
-                    <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.svg') }}"
-                        class="h-25px d-none d-lg-inline" />
+                    <img alt="Logo" src="{{ asset('assets/media/logos/default-small-dark.svg') }}"
+                        class="h-25px d-none d-lg-inline" /> <span class="logo">Alpha Rent</span>
                     <img alt="Logo" src="{{ asset('assets/media/logos/default-small-dark.svg') }}"
                         class="h-25px d-inline d-lg-none" />
                 </a>

@@ -1,4 +1,12 @@
 @extends('layouts.master')
+<style>
+    @media (min-width: 950px) {
+        .img-new {
+            height: 630px;
+        }
+
+    }
+</style>
 @section('content')
     <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
         <!--begin::Hero-->
@@ -30,19 +38,20 @@
                                 <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
                                     aria-label="Slide 3"></button>
                             </div>
+                            <h1 style="text-align: center" class="mb-7">- Alpha Rent -</h1>
                             <div class="carousel-inner">
 
                                 <div class="carousel-item">
                                     <img src="https://www.batam.cc/wp-content/uploads/2018/11/Rental-mobil-batam-nada-car-rental-1.jpg"
-                                        class="d-block w-100" style="height: 630px" alt="...">
+                                        class="d-block w-100 img-new" alt="...">
                                 </div>
                                 <div class="carousel-item active">
                                     <img src="https://cdnb.artstation.com/p/assets/covers/images/039/909/067/large/rental-mobil-batam-murah-terbaik-rental-mobil-batam-murah-terbaik-rental-mobil-batam-murah-kota-batam.jpg?1627309430"
-                                        class="d-block w-100" style="height: 630px" alt="...">
+                                        class="d-block w-100 img-new" alt="...">
                                 </div>
                                 <div class="carousel-item">
                                     <img src="https://wisataonline.com/wp-content/uploads/2020/08/rental-mobil-jember.jpg"
-                                        class="d-block w-100" style="height: 630px" alt="...">
+                                        class="d-block w-100 img-new" alt="...">
                                 </div>
                             </div>
                             <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
@@ -56,112 +65,63 @@
                                 <span class="visually-hidden">Next</span>
                             </button>
                         </div>
-                        <h1 style="text-align: center" class="mt-5 mb-5">- Alpha Rent Car -</h1>
-                        <h5 style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-                            animi? Similique ut ratione
-                            quasi illum pariatur iste voluptates, deleniti commodi dolorum eveniet dolor sunt, vitae
-                            doloribus. Similique in libero excepturi! Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Adipisci consequatur quod ipsa, delectus modi beatae consectetur sint ex eius provident ea
-                            explicabo ipsam cupiditate perferendis tenetur facere, possimus reiciendis quos. Lorem ipsum,
-                            dolor sit amet consectetur adipisicing elit. Sunt facere beatae amet. Omnis rerum voluptates
-                            blanditiis! A nobis impedit ullam necessitatibus error rem vel excepturi sint harum! Velit,
-                            perferendis nam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat fugiat cum vel
-                            adipisci molestiae quaerat velit perspiciatis sequi? Atque tempore possimus quo saepe. Ex
-                            blanditiis, veritatis odio aperiam explicabo reprehenderit. Lorem ipsum, dolor sit amet
-                            consectetur adipisicing elit. Error, vero provident nisi veritatis delectus eum quae, officia
-                            vel accusantium voluptates iure explicabo tempore nihil reiciendis nam esse sequi minima
-                            possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus enim architecto
-                            totam facilis corporis reprehenderit beatae mollitia similique suscipit aperiam repellendus
-                            laboriosam ratione quas, ipsum eos. Maiores minima culpa tempore. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Veritatis nisi excepturi, corporis rem vero molestiae sunt
-                            mollitia assumenda et vel quaerat deleniti recusandae officiis nihil nemo. Sit iure consequatur
-                            deleniti!</h5>
-                        <h5 style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-                            animi? Similique ut ratione
-                            quasi illum pariatur iste voluptates, deleniti commodi dolorum eveniet dolor sunt, vitae
-                            doloribus. Similique in libero excepturi! Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Adipisci consequatur quod ipsa, delectus modi beatae consectetur sint ex eius provident ea
-                            explicabo ipsam cupiditate perferendis tenetur facere, possimus reiciendis quos. Lorem ipsum,
-                            dolor sit amet consectetur adipisicing elit. Sunt facere beatae amet. Omnis rerum voluptates
-                            blanditiis! A nobis impedit ullam necessitatibus error rem vel excepturi sint harum! Velit,
-                            perferendis nam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat fugiat cum vel
-                            adipisci molestiae quaerat velit perspiciatis sequi? Atque tempore possimus quo saepe. Ex
-                            blanditiis, veritatis odio aperiam explicabo reprehenderit. Lorem ipsum, dolor sit amet
-                            consectetur adipisicing elit. Error, vero provident nisi veritatis delectus eum quae, officia
-                            vel accusantium voluptates iure explicabo tempore nihil reiciendis nam esse sequi minima
-                            possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus enim architecto
-                            totam facilis corporis reprehenderit beatae mollitia similique suscipit aperiam repellendus
-                            laboriosam ratione quas, ipsum eos. Maiores minima culpa tempore. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Veritatis nisi excepturi, corporis rem vero molestiae sunt
-                            mollitia assumenda et vel quaerat deleniti recusandae officiis nihil nemo. Sit iure consequatur
-                            deleniti!</h5>
-                        <h5 style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-                            animi? Similique ut ratione
-                            quasi illum pariatur iste voluptates, deleniti commodi dolorum eveniet dolor sunt, vitae
-                            doloribus. Similique in libero excepturi! Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Adipisci consequatur quod ipsa, delectus modi beatae consectetur sint ex eius provident ea
-                            explicabo ipsam cupiditate perferendis tenetur facere, possimus reiciendis quos. Lorem ipsum,
-                            dolor sit amet consectetur adipisicing elit. Sunt facere beatae amet. Omnis rerum voluptates
-                            blanditiis! A nobis impedit ullam necessitatibus error rem vel excepturi sint harum! Velit,
-                            perferendis nam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat fugiat cum vel
-                            adipisci molestiae quaerat velit perspiciatis sequi? Atque tempore possimus quo saepe. Ex
-                            blanditiis, veritatis odio aperiam explicabo reprehenderit. Lorem ipsum, dolor sit amet
-                            consectetur adipisicing elit. Error, vero provident nisi veritatis delectus eum quae, officia
-                            vel accusantium voluptates iure explicabo tempore nihil reiciendis nam esse sequi minima
-                            possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus enim architecto
-                            totam facilis corporis reprehenderit beatae mollitia similique suscipit aperiam repellendus
-                            laboriosam ratione quas, ipsum eos. Maiores minima culpa tempore. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Veritatis nisi excepturi, corporis rem vero molestiae sunt
-                            mollitia assumenda et vel quaerat deleniti recusandae officiis nihil nemo. Sit iure consequatur
-                            deleniti!</h5>
-                        <h5 style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-                            animi? Similique ut ratione
-                            quasi illum pariatur iste voluptates, deleniti commodi dolorum eveniet dolor sunt, vitae
-                            doloribus. Similique in libero excepturi! Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Adipisci consequatur quod ipsa, delectus modi beatae consectetur sint ex eius provident ea
-                            explicabo ipsam cupiditate perferendis tenetur facere, possimus reiciendis quos. Lorem ipsum,
-                            dolor sit amet consectetur adipisicing elit. Sunt facere beatae amet. Omnis rerum voluptates
-                            blanditiis!iciendis nam esse sequi minima
-                            possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus enim architecto
-                            totam facilis corporis reprehenderit beatae mollitia similique suscipit aperiam repellendus
-                            laboriosam ratione quas, ipsum eos. Maiore</h5>
+                        <div class="mt-7">
+                            <h5 style="text-align: justify">Alpha Rent, sebuah perusahaan rental mobil yang telah
+                                menyediakan solusi mobilitas yang handal dan efisien sejak didirikan. Sebagai pemimpin dalam
+                                industri ini, Alpha Rent menawarkan armada kendaraan terkini yang dirawat dengan baik, mulai
+                                dari mobil ekonomi hingga kendaraan mewah, memenuhi berbagai kebutuhan pelanggan dengan
+                                berbagai selera dan anggaran.</h5>
+                            <h5 style="text-align: justify">Alpha Rent, sebuah perusahaan rental mobil yang telah
+                                menyediakan solusi mobilitas yang handal dan efisien sejak didirikan. Sebagai pemimpin dalam
+                                industri ini, Alpha Rent menawarkan armada kendaraan terkini yang dirawat dengan baik, mulai
+                                dari mobil ekonomi hingga kendaraan mewah, memenuhi berbagai kebutuhan pelanggan dengan
+                                berbagai selera dan anggaran.
 
-                        <div class="row" style="text-align: justify">
-                            <div class="col">
-                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. At temporibus repellat ipsum
-                                    voluptatum laboriosam provident aspernatur hic? Eius atque inventore qui sit nemo!
-                                    Impedit molestiae voluptates et delectus quae eaque. Lorem ipsum dolor sit amet
-                                    consectetur, adipisicing elit. Molestias maxime corporis aliquid, distinctio laborum
-                                    esse iure voluptas est maiores saepe et itaque tenetur repudiandae tempore vitae cumque
-                                    illum libero dolor.</p>
+                                Komitmen utama Alpha Rent adalah memberikan layanan pelanggan terbaik. Tim kami yang
+                                profesional dan berpengalaman selalu siap membantu pelanggan dalam memilih kendaraan yang
+                                sesuai dengan kebutuhan mereka. Dengan proses pemesanan yang cepat dan transparan melalui
+                                platform online kami, pelanggan Alpha Rent dapat dengan mudah merencanakan perjalanan mereka
+                                tanpa kerumitan.</h5>
+                            <h5 style="text-align: justify">Inovasi adalah landasan utama Alpha Rent dalam menjalankan
+                                bisnisnya. Kami terus mengadopsi teknologi terkini untuk memastikan pengalaman pelanggan
+                                yang lebih baik, termasuk aplikasi seluler yang memudahkan pelanggan dalam melakukan
+                                pemesanan, pembayaran, dan melacak lokasi kendaraan secara real-time. Selain itu, kami
+                                selalu berusaha untuk menghadirkan armada ramah lingkungan guna mendukung upaya
+                                keberlanjutan dan menjaga lingkungan.</h5>
+                            <h5 style="text-align: justify">Alpha Rent juga mengutamakan keamanan pelanggan dan kendaraan.
+                                Seluruh armada kami menjalani pemeliharaan rutin dan pemeriksaan keamanan secara berkala.
+                                Dengan prosedur pemeliharaan yang ketat, kami memastikan bahwa setiap kendaraan yang
+                                disewakan oleh Alpha Rent dalam kondisi optimal, memberikan ketenangan pikiran kepada
+                                pelanggan kami.</h5>
+
+                            <div class="row" style="text-align: justify">
+
+                                <div class="col">
+                                    <h6>
+                                        Sebagai bagian dari komitmen kami terhadap pelayanan unggul, Alpha Rent senantiasa
+                                        mendengarkan umpan balik pelanggan dan terus melakukan peningkatan. Kami percaya
+                                        bahwa keberhasilan kami tidak hanya terletak pada kualitas armada dan teknologi,
+                                        tetapi juga pada kemampuan kami untuk terus beradaptasi dengan kebutuhan pelanggan
+                                        serta tren industri. Dengan semangat inovasi yang terus berkobar, Alpha Rent siap
+                                        menghadapi masa depan rental mobil dengan memberikan solusi mobilitas yang lebih
+                                        baik dan efisien.</h6>
+                                </div>
+                                <div class="col">
+                                    <h6>Alpha Rent tidak hanya sekadar penyedia kendaraan, tetapi juga mitra perjalanan yang
+                                        mengutamakan kenyamanan dan kepuasan pelanggan. Kami berusaha memberikan pengalaman
+                                        menyenangkan setiap kali pelanggan memilih layanan rental kami. Dengan harga yang
+                                        kompetitif, layanan pelanggan yang responsif, dan armada kendaraan yang selalu
+                                        diperbarui, Alpha Rent hadir untuk memenuhi kebutuhan mobilitas pelanggan modern.
+                                    </h6>
+                                </div>
                             </div>
-                            <div class="col">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse porro natus
-                                eveniet sint eius in. Molestias omnis delectus sed voluptate perferendis iusto pariatur
-                                perspiciatis, nulla blanditiis, corrupti aliquam facere unde. Lorem ipsum dolor sit amet
-                                consectetur adipisicing elit. Veniam nemo odio, optio omnis aut consequatur iure tenetur
-                                officia veritatis inventore reprehenderit totam enim minima quidem deserunt animi aliquam
-                                dolor possimus!</div>
+                            <h5 style="text-align: justify">Sebagai bagian dari misi kami untuk menjadi mitra mobilitas yang
+                                terpercaya, Alpha Rent terus berupaya untuk memberikan penawaran khusus, promosi, dan
+                                keuntungan lainnya kepada pelanggan setia kami. Dengan pelayanan berkualitas tinggi,
+                                inovasi, dan komitmen terhadap kepuasan pelanggan, Alpha Rent bangga menjadi pilihan utama
+                                dalam dunia rental mobil.</h5>
+                            <h1 style="text-align: center" class="mt-5">Thank you for using our services.</h1>
                         </div>
-                        <h5 style="text-align: justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda,
-                            animi? Similique ut ratione
-                            quasi illum pariatur iste voluptates, deleniti commodi dolorum eveniet dolor sunt, vitae
-                            doloribus. Similique in libero excepturi! Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Adipisci consequatur quod ipsa, delectus modi beatae consectetur sint ex eius provident ea
-                            explicabo ipsam cupiditate perferendis tenetur facere, possimus reiciendis quos. Lorem ipsum,
-                            dolor sit amet consectetur adipisicing elit. Sunt facere beatae amet. Omnis rerum voluptates
-                            blanditiis! A nobis impedit ullam necessitatibus error rem vel excepturi sint harum! Velit,
-                            perferendis nam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat fugiat cum vel
-                            adipisci molestiae quaerat velit perspiciatis sequi? Atque tempore possimus quo saepe. Ex
-                            blanditiis, veritatis odio aperiam explicabo reprehenderit. Lorem ipsum, dolor sit amet
-                            consectetur adipisicing elit. Error, vero provident nisi veritatis delectus eum quae, officia
-                            vel accusantium voluptates iure explicabo tempore nihil reiciendis nam esse sequi minima
-                            possimus? Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus enim architecto
-                            totam facilis corporis reprehenderit beatae mollitia similique suscipit aperiam repellendus
-                            laboriosam ratione quas, ipsum eos. Maiores minima culpa tempore. Lorem ipsum dolor sit amet
-                            consectetur adipisicing elit. Veritatis nisi excepturi, corporis rem vero molestiae sunt
-                            mollitia assumenda et vel quaerat deleniti recusandae officiis nihil nemo. Sit iure consequatur
-                            deleniti!</h5>
-                        <h1 style="text-align: center" class="mt-5">Thank you for using our services.</h1>
                     </div>
                     <div id="kt_app_footer"
                         class="app-footer d-flex flex-column flex-md-row align-items-center flex-center flex-md-stack py-2 py-lg-4">
