@@ -163,6 +163,7 @@ body {
     border: #216cff solid 3px;
     border-image: none;
     margin: 0px 10px;
+    border-radius: 25px;
     border-width: 2px 0;
 }
 

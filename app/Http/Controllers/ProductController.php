@@ -42,8 +42,15 @@ class ProductController extends Controller
 
 
         $user_id = Auth::id();
-        $company = Company::where('user_id', $user_id)->first();
+    $company = Company::where('user_id', $user_id)->first();
+
+    if ($company) {
+        // Check if $company is not null
         $products = Product::where('company_id', $company->id)->get();
+    } else {
+        // If $company is null, set $products to an empty collection
+        $products = collect();
+    }
 
     return view('index-data', compact('products'));
     }

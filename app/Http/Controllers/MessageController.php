@@ -41,7 +41,7 @@ class MessageController extends Controller
     }
     public function index_order()
     {
-        $messages = auth()->user()->companies->messages;
+        $messages = optional(auth()->user()->companies)->messages ?? [];
 
 
         return view('index-order', compact('messages'));

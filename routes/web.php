@@ -30,11 +30,11 @@ Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/', [ProductController::class, 'index_product'])->name('index-product');
 Route::get('/product/{product}', [ProductController::class, 'show_product'])->name('show-product');
 Route::post('/store/message', [MessageController::class, 'store_message'])->name('store-message');
+Route::get('/about', [CompanyController::class, 'index_about'])->name('index-about');
 
 
 Route::middleware(['admin'])->group(function () {
     Route::get('/product', [ProductController::class, 'index_data'])->name('index-data');
-    Route::get('/about', [CompanyController::class, 'index_about'])->name('index-about');
     Route::patch('/product/{product}/update', [ProductController::class, 'update_data'])->name('update-data');
     Route::delete('/product/{product}', [ProductController::class, 'delete_product'])->name('delete-product');
     Route::delete('/order/{message}', [MessageController::class, 'delete_order'])->name('delete-order');

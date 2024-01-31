@@ -54,7 +54,9 @@
                             </div>
 
                         </div>
+
                         <div class="table-responsive">
+
                             <table class="table table-bordered">
                                 <thead class="table-dark">
                                     <tr>
@@ -70,45 +72,53 @@
                                         <th style="text-align: center; vertical-align:middle">Action</th>
                                     </tr>
                                 <tbody>
-                                    @foreach ($products as $product)
-                                        <tr>
-                                            <td style="text-align: center; vertical-align:middle">{{ $loop->iteration }}
-                                            </td>
-                                            <td style="text-align: center; vertical-align:middle">{{ $product->model }}</td>
-                                            <td style="text-align: center; vertical-align:middle">{{ $product->merk }}</td>
-                                            <td style="text-align: center; vertical-align:middle">{{ $product->plat }}
-                                            </td>
-                                            <td style="text-align: center; vertical-align:middle">
-                                                {{ $product->transmition }}
-                                            </td>
-                                            <td style="text-align: center; vertical-align:middle">{{ $product->color }}</td>
-                                            <td style="text-align: center; vertical-align:middle">
-                                                {{ $product->years_output }}
-                                            </td>
-                                            <td style="text-align: center; vertical-align:middle">
-                                                Rp. {{ number_format($product->price, 2, ',', '.') }}</td>
-                                            <td style="text-align: center; vertical-align:middle">
-                                                @if ($product->status == 1)
-                                                    <span
-                                                        class="badge badge-light-success fw-bold text-span">Available</span>
-                                                @else
-                                                    <span class="badge badge-light-warning fw-bold text-span">Not
-                                                        Available</span>
-                                                @endif
-                                            </td>
-                                            <td style="width:14%" class="td-button">
-                                                <div class="button-container">
-                                                    <button type="button" class="btn btn-primary btn-sm m-button"
-                                                        data-toggle="modal" data-target="#editModal{{ $product->id }}">
-                                                        Edit
-                                                    </button>
-                                                    <form action="{{ route('delete-product', $product) }}" method="post">
-                                                        @method('delete')
-                                                        @csrf
-                                                        <button type="submit"
-                                                            class="btn btn-danger btn-sm m-button">Delete</button>
-                                                    </form>
-                                                </div>
+                                    @if ($products->isEmpty())
+                                        <p style="text-align: center">Nothing Data.</p>
+                                    @else
+                                        @foreach ($products as $product)
+                                            <tr>
+                                                <td style="text-align: center; vertical-align:middle">{{ $loop->iteration }}
+                                                </td>
+                                                <td style="text-align: center; vertical-align:middle">{{ $product->model }}
+                                                </td>
+                                                <td style="text-align: center; vertical-align:middle">{{ $product->merk }}
+                                                </td>
+                                                <td style="text-align: center; vertical-align:middle">{{ $product->plat }}
+                                                </td>
+                                                <td style="text-align: center; vertical-align:middle">
+                                                    {{ $product->transmition }}
+                                                </td>
+                                                <td style="text-align: center; vertical-align:middle">{{ $product->color }}
+                                                </td>
+                                                <td style="text-align: center; vertical-align:middle">
+                                                    {{ $product->years_output }}
+                                                </td>
+                                                <td style="text-align: center; vertical-align:middle">
+                                                    Rp. {{ number_format($product->price, 2, ',', '.') }}</td>
+                                                <td style="text-align: center; vertical-align:middle">
+                                                    @if ($product->status == 1)
+                                                        <span
+                                                            class="badge badge-light-success fw-bold text-span">Available</span>
+                                                    @else
+                                                        <span class="badge badge-light-warning fw-bold text-span">Not
+                                                            Available</span>
+                                                    @endif
+                                                </td>
+                                                <td style="width:14%" class="td-button">
+                                                    <div class="button-container">
+                                                        <button type="button" class="btn btn-primary btn-sm m-button"
+                                                            data-toggle="modal"
+                                                            data-target="#editModal{{ $product->id }}">
+                                                            Edit
+                                                        </button>
+                                                        <form action="{{ route('delete-product', $product) }}"
+                                                            method="post">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button type="submit"
+                                                                class="btn btn-danger btn-sm m-button">Delete</button>
+                                                        </form>
+                                                    </div>
                         </div>
                         <div class="modal" id="editModal{{ $product->id }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -255,6 +265,7 @@
                         </td>
                         </tr>
                         @endforeach
+                        @endif
                         </tbody>
                         </thead>
                         </table>

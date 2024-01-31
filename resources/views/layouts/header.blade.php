@@ -58,18 +58,19 @@
                                     Vehicle</a>
 
                             </div>
-                            <!--end:Menu item-->
-                            <!--begin:Menu item-->
-                            <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
-                                <!--begin:Menu link-->
-                                <a @if (request()->is('about')) class="actives" @endif
-                                    href="{{ route('index-about') }}" class="menu-header">About Me
-                                </a>
-                                <!--end:Menu link-->
-                                <!--begin:Menu sub-->
-
-                            </div>
                         @endif
+                        <!--end:Menu item-->
+                        <!--begin:Menu item-->
+                        <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                            <!--begin:Menu link-->
+                            <a @if (request()->is('about')) class="actives" @endif
+                                href="{{ route('index-about') }}" class="menu-header">About Us
+                            </a>
+                            <!--end:Menu link-->
+                            <!--begin:Menu sub-->
+
+                        </div>
+
                         <!--end:Menu sub-->
                     </div>
                     <!--end:Menu item-->

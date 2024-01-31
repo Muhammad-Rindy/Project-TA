@@ -20,6 +20,8 @@ class CompanyController extends Controller
     {
         $companies = auth()->user()->companies;
 
+        // return response()->json($companies);
+
         return view('index-company', compact('companies'));
     }
 

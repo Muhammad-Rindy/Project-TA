@@ -64,12 +64,12 @@
                                 <!--end::Page title-->
                                 <!--begin::Actions-->
                                 <div class="d-flex align-items-center gap-2 gap-lg-3">
-                                    @if ($companies->count() === 0)
+                                    @if (empty($companies))
                                         <!-- Button trigger modal -->
                                         <button type="button" style="border: solid gray 1px; font-weight:bold"
                                             class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop">
-                                            New Company
+                                            + Create Company
                                         </button>
                                     @endif
 
@@ -113,8 +113,9 @@
                                                         <input type="file" name="image" id="image"
                                                             class="form-control" aria-describedby="passwordHelpBlock"
                                                             required>
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-secondary btn-sm"
+                                                        <div style=text-align:end class="mt-5">
+                                                            <button style="border: solid gray 1px" type="button"
+                                                                class="btn btn-outline-secondary btn-sm"
                                                                 data-bs-dismiss="modal">Close</button>
                                                             <button type="submit"
                                                                 class="btn btn-primary btn-sm">Save</button>
@@ -128,34 +129,28 @@
                         </div>
                         <div class="row row-cols-1 g-4">
                             <div class="card mb-3">
-                                @if ($companies)
-                                    @if ($companies->count() === null)
-                                        <p>Nothing</p>
-                                    @else
-                                        <img src="{{ asset('storage/' . $companies->image) }}" class="card-img-top mt-2"
-                                            alt="Product Image">
-                                        <div class="card-body">
-                                            <h2 class="card-title" style="text-align: center">{{ $companies->name }}</h2>
-                                            <hr>
-                                            <p class="card-text" style="text-align: justify">{{ $companies->description }}
-                                            </p>
-                                            <br>
-                                            <h4>Untuk Info Lebih Lanjut, Silahkan Hubungi Kami :</h4>
-                                            <br>
-                                            <h5 class="card-title">Email : <span
-                                                    style="font-style:italic">{{ $companies->email }}</span></h5>
-                                            <h5 class="card-title">Call Center : <span
-                                                    style="font-style: italic">{{ $companies->number_phone }}</span></h5>
-
-                                            <hr>
-                                            <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                                    ago</small></p>
-                                            <h5 class="card-title" style="font-style:initial">📍 {{ $companies->address }}
-                                            </h5>
-                                        </div>
-                                    @endif
+                                @if (empty($companies))
+                                    <p style="text-align: center" class="m-3">Nothing Data.</p>
                                 @else
-                                    <h4 style="text-align: center" class="m-3">No Data</h4>
+                                    <img src="{{ asset('storage/' . $companies->image) }}" class="card-img-top mt-2"
+                                        alt="Product Image">
+                                    <div class="card-body">
+                                        <h2 class="card-title" style="text-align: center">{{ $companies->name }}</h2>
+                                        <hr>
+                                        <p class="card-text" style="text-align: justify">{{ $companies->description }}
+                                        </p>
+                                        <br>
+                                        <h5 class="card-title">Email : <span
+                                                style="font-style:italic">{{ $companies->email }}</span></h5>
+                                        <h5 class="card-title">Call Center : <span
+                                                style="font-style: italic">{{ $companies->number_phone }}</span></h5>
+
+                                        <hr>
+                                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
+                                                ago</small></p>
+                                        <h5 class="card-title" style="font-style:initial">📍 {{ $companies->address }}
+                                        </h5>
+                                    </div>
                                 @endif
                             </div>
                         </div>
