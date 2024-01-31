@@ -142,7 +142,7 @@
                             </div>
 
 
-                            @if (Auth::check() && !Auth::user()->roles == 'admin')
+                            @if (Auth::check() && Auth::user()->roles == 'member')
                                 <div class="menu-item px-5">
                                     <a href="{{ route('index-company') }}" class="menu-link px-5">
                                         <span class="menu-text">Details Company</span>
