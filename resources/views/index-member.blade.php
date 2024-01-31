@@ -89,7 +89,7 @@
                                                 <td style="text-align: center; vertical-align:middle">
                                                     @if ($member->status == 1)
                                                         <span
-                                                            class="badge badge-light-success fw-bold text-span">Active</span>
+                                                            class="badge badge-light-success fw-bold text-span">Verified</span>
                                                     @elseif($member->status == 0)
                                                         <span class="badge badge-light-warning fw-bold text-span">Waiting
                                                             Verification</span>
