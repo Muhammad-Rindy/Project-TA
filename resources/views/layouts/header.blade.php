@@ -50,13 +50,20 @@
                         </div>
                         <!--end:Menu item-->
                         <!--begin:Menu item-->
-                        @if (Auth::check())
+                        @if (Auth::check() && Auth::user()->roles == 'member')
                             <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
                                 <!--begin:Menu link-->
                                 <a @if (request()->is('product')) class="actives" @endif
                                     href="{{ route('index-data') }}" class="menu-header">List
                                     Vehicle</a>
 
+                            </div>
+                        @elseif(Auth::check() && Auth::user()->roles == 'admin')
+                            <div class="menu-item here show menu-here-bg menu-lg-down-accordion me-0 me-lg-2">
+                                <!--begin:Menu link-->
+                                <a @if (request()->is('list-member')) class="actives" @endif
+                                    href="{{ route('index-member') }}" class="menu-header">List
+                                    Member</a>
                             </div>
                         @endif
                         <!--end:Menu item-->
@@ -116,8 +123,14 @@
                                     <div class="d-flex flex-column">
                                         <div class="fw-bold d-flex align-items-center fs-5">
                                             {{ Auth::user()->name }}
-                                            <span
-                                                class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Active</span>
+
+                                            @if (Auth::user()->status == '1')
+                                                <span
+                                                    class="badge badge-light-success fw-bold fs-8 px-2 py-1 ms-2">Active</span>
+                                            @else
+                                                <span class="badge badge-light-warning fw-bold fs-8 px-2 py-1 ms-2">Not
+                                                    Verified</span>
+                                            @endif
                                         </div>
                                     </div>
                                 </div>
@@ -128,14 +141,18 @@
                                     Profile</a>
                             </div>
 
-                            <div class="menu-item px-5">
-                                <a href="{{ route('index-company') }}" class="menu-link px-5">
-                                    <span class="menu-text">Details Company</span>
-                                </a>
-                            </div>
-                            <div class="menu-item px-5">
-                                <a href="{{ route('index-order') }}" class="menu-link px-5">Customer Orders</a>
-                            </div>
+
+                            @if (Auth::check() && !Auth::user()->roles == 'admin')
+                                <div class="menu-item px-5">
+                                    <a href="{{ route('index-company') }}" class="menu-link px-5">
+                                        <span class="menu-text">Details Company</span>
+                                    </a>
+                                </div>
+                                <div class="menu-item px-5">
+                                    <a href="{{ route('index-order') }}" class="menu-link px-5">Customer Orders</a>
+                                </div>
+                            @elseif(Auth::check() && !Auth::user()->roles == 'admin')
+                            @endif
 
                             <div class="separator my-2"></div>
                             <div class="menu-item px-5" data-kt-menu-trigger="{default: 'click', lg: 'hover'}"

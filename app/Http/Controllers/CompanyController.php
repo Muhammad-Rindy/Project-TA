@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -24,6 +25,29 @@ class CompanyController extends Controller
 
         return view('index-company', compact('companies'));
     }
+    public function index_member()
+    {
+        $members = User::all();
+
+
+        return view('index-member', compact('members'));
+    }
+
+    public function update_member(User $member, Request $request)
+    {
+        $request->validate([
+            'status' => 'required',
+        ]);
+
+
+
+
+        $member->update([
+                'status' => $request->status,
+        ]);
+
+        return Redirect::back()->with('success', 'Form submitted successfully');
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -33,6 +57,12 @@ class CompanyController extends Controller
     public function index_about()
     {
         return view('index-about');
+    }
+
+    public function delete_member(User $member)
+    {
+        $member->delete();
+        return Redirect::back()->with('success', 'Deleted successfully');
     }
 
     /**

@@ -159,15 +159,19 @@ body {
 .container-content {
     background-color: #2d25c529;
     color: inherit;
-    padding: 15px 20px 20px 20px;
+    padding: 30px 20px 45px 20px;
     border: #216cff solid 3px;
     border-image: none;
     margin: 0px 10px;
-    border-radius: 25px;
+    border-radius: 20px;
     border-width: 2px 0;
 }
 
 /* Backgrounds */
+.form-control::placeholder {
+    font-size: 13px;
+    font-family: 'Crisp Noto Sans Bold';
+}
 
 .main-bg {
     background: #081e61;

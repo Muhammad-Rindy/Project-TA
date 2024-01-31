@@ -52,80 +52,89 @@
                                     </a>
                                 </div>
                             </div>
-                            <div
-                                class="app-toolbar-wrapper d-flex align-items-center flex-stack flex-wrap gap-2 py-4 w-100">
-                                <!--begin::Page title-->
-                                <div class="page-title d-flex flex-column justify-content-center gap-2">
-                                    <!--begin::Title-->
-
-
+                            @if (Auth::user()->status == '0')
+                                <div style="margin-bottom: -25px; text-align:center" class="alert alert-danger">
+                                    Your account has not been verified, the Admin will contact you within 1 x 24 hours.
                                 </div>
+                            @else
+                                <div
+                                    class="app-toolbar-wrapper d-flex align-items-center flex-stack flex-wrap gap-2 py-4 w-100">
 
-                                <!--end::Page title-->
-                                <!--begin::Actions-->
-                                <div class="d-flex align-items-center gap-2 gap-lg-3">
-                                    @if (empty($companies))
-                                        <!-- Button trigger modal -->
-                                        <button type="button" style="border: solid gray 1px; font-weight:bold"
-                                            class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
-                                            data-bs-target="#staticBackdrop">
-                                            + Create Company
-                                        </button>
-                                    @endif
+                                    <!--begin::Page title-->
+                                    <div class="page-title d-flex flex-column justify-content-center gap-2">
+                                        <!--begin::Title-->
 
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                        data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                        aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered modal-lg">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Your
-                                                        Company
-                                                    </h1>
-                                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                        aria-label="Close"></button>
+
+                                    </div>
+
+                                    <!--end::Page title-->
+                                    <!--begin::Actions-->
+
+                                    <div class="d-flex align-items-center gap-2 gap-lg-3">
+                                        @if (empty($companies))
+                                            <!-- Button trigger modal -->
+                                            <button type="button" style="border: solid gray 1px; font-weight:bold"
+                                                class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
+                                                data-bs-target="#staticBackdrop">
+                                                + Create Company
+                                            </button>
+                                        @endif
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                            data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                            aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered modal-lg">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Your
+                                                            Company
+                                                        </h1>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <form action="{{ route('store-company') }}" method="post"
+                                                        enctype="multipart/form-data">
+                                                        <div class="modal-body">
+                                                            @csrf
+                                                            <label for="name" class="form-label">Name Company</label>
+                                                            <input type="text" id="name" name="name"
+                                                                class="form-control" aria-describedby="name" required>
+                                                            <label for="address" class="form-label">Address</label>
+                                                            <input type="text" id="address" name="address"
+                                                                class="form-control" aria-describedby="address" required>
+                                                            <label for="description" class="form-label">Description
+                                                                Company</label>
+                                                            <input type="text" name="description" id="description"
+                                                                class="form-control" aria-describedby="description"
+                                                                required>
+                                                            <label for="email" class="form-label">Email Company</label>
+                                                            <input type="email" name="email" id="email"
+                                                                class="form-control" aria-describedby="email" required>
+                                                            <label for="number_phone" class="form-label">Number Phone
+                                                                Company</label>
+                                                            <input type="text" name="number_phone" id="number_phone"
+                                                                class="form-control" aria-describedby="passwordHelpBlock"
+                                                                required>
+                                                            <label for="image" class="form-label">Upload Image Your
+                                                                Company</label>
+                                                            <input type="file" name="image" id="image"
+                                                                class="form-control" aria-describedby="passwordHelpBlock"
+                                                                required>
+                                                            <div style=text-align:end class="mt-5">
+                                                                <button style="border: solid gray 1px" type="button"
+                                                                    class="btn btn-outline-secondary btn-sm"
+                                                                    data-bs-dismiss="modal">Close</button>
+                                                                <button type="submit"
+                                                                    class="btn btn-primary btn-sm">Save</button>
+                                                            </div>
+                                                    </form>
                                                 </div>
-                                                <form action="{{ route('store-company') }}" method="post"
-                                                    enctype="multipart/form-data">
-                                                    <div class="modal-body">
-                                                        @csrf
-                                                        <label for="name" class="form-label">Name Company</label>
-                                                        <input type="text" id="name" name="name"
-                                                            class="form-control" aria-describedby="name" required>
-                                                        <label for="address" class="form-label">Address</label>
-                                                        <input type="text" id="address" name="address"
-                                                            class="form-control" aria-describedby="address" required>
-                                                        <label for="description" class="form-label">Description
-                                                            Company</label>
-                                                        <input type="text" name="description" id="description"
-                                                            class="form-control" aria-describedby="description" required>
-                                                        <label for="email" class="form-label">Email Company</label>
-                                                        <input type="email" name="email" id="email"
-                                                            class="form-control" aria-describedby="email" required>
-                                                        <label for="number_phone" class="form-label">Number Phone
-                                                            Company</label>
-                                                        <input type="text" name="number_phone" id="number_phone"
-                                                            class="form-control" aria-describedby="passwordHelpBlock"
-                                                            required>
-                                                        <label for="image" class="form-label">Upload Image Your
-                                                            Company</label>
-                                                        <input type="file" name="image" id="image"
-                                                            class="form-control" aria-describedby="passwordHelpBlock"
-                                                            required>
-                                                        <div style=text-align:end class="mt-5">
-                                                            <button style="border: solid gray 1px" type="button"
-                                                                class="btn btn-outline-secondary btn-sm"
-                                                                data-bs-dismiss="modal">Close</button>
-                                                            <button type="submit"
-                                                                class="btn btn-primary btn-sm">Save</button>
-                                                        </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
+
                                 </div>
-                            </div>
                         </div>
                         <div class="row row-cols-1 g-4">
                             <div class="card mb-3">
@@ -153,6 +162,7 @@
                                     </div>
                                 @endif
                             </div>
+                            @endif
                         </div>
                     </div>
                 </div>

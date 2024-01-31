@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Register</title>
+    <title>Login Dashboard</title>
     <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <link rel="stylesheet" type="text/css" href="{{ asset('login.css') }}">
     <link rel="shortcut icon" type="image/x-icon" href="{{ asset('alpha.png') }}">
@@ -14,89 +14,85 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script type="text/javascript">
+        window.$crisp = [];
+        window.CRISP_WEBSITE_ID = "e72e959c-79cd-4537-92aa-9b1b009e79e1";
+        (function() {
+            d = document;
+            s = d.createElement("script");
+            s.src = "https://client.crisp.chat/l.js";
+            s.async = 1;
+            d.getElementsByTagName("head")[0].appendChild(s);
+        })();
+    </script>
 </head>
 
-<body class="">
+<body class="main-bg">
     @if (session('error-login'))
         <div id="live">
-            <div class="danger-alert">
-                <i class="far fa-check-circle shine-alert"></i> &nbsp; &nbsp;
-                <span>Sorry! {{ session('error-login') }}</span>
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Wrong!{{ session('error-login') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
     @endif
-    <div class="container-new">
-        <div class="right-side">
-            <img src="{{ asset('alpha.png') }}" width="190px" height="190px" alt="no-image" style="margin: -25px 0px">
-            <div class="feedback">
-                <h4>Drop-off and Pickup Services</h4>
-                We value your <span style="color: #ff32f7"> feedback </span>and aim to provide you with the best
-                <span style="color: #ff32f7">experience</span>. Your thoughts are important to
-                us.Please feel free to share any concerns or <span style="color: #ff32f7"> suggestion </span> you may
-                have. Your feedback helps us improve
-                and
-                ensures that we continue to meet your expectations. <br>
-                Thank you for taking the time to contact us.
-            </div>
-        </div>
-        <div class="left-side">
-            <div style="padding:10px 20px;width:500px">
-                <h5 style="font-family: fantasy">Register Your Account</h5>
-                <p>Your Social Campaigns</p>
-                <hr class="hr-text" data-content="Your Account">
+    <div class="login-container text-c animated flipInX">
 
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <div class="mb-3" style="text-align: left">
-                        <label for="name" class="form-label m-1">Name</label>
-                        <input type="text" name="name" class="form-control @error('name') is-invalid @enderror"
-                            value="{{ old('name') }}" required autocomplete="name" autofocus>
-                        @error('name')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="mb-3" style="text-align: left">
-                        <label for="email" class="form-label m-1">Email address</label>
-                        <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
-                            value="{{ old('email') }}" required autocomplete="email">
-                        @error('email')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="mb-3" style="text-align: left">
-                        <label for="password" class="form-label m-1">Password</label>
-                        <input type="password" name="password"
-                            class="form-control @error('password') is-invalid @enderror" required
-                            autocomplete="new-password">
-                        @error('password')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
-                    <div class="mb-3" style="text-align: left">
-                        <label for="password-confirm" class="form-label m-1">Confirmation Password</label>
-                        <input type="password" id="password-confirm" name="password_confirmation" class="form-control"
-                            required autocomplete="new-password">
-                    </div>
-
-                    <div class="d-grid gap-2 mt-5 mb-3">
-                        <button class="btn btn-primary mt-2" type="submit">Register</button>
-                    </div>
-                </form>
-                <div class="d-grid">
-                    <a class="btn btn-primary" href="{{ route('login') }}">Login</a>
+        <h3 class="text-whitesmoke">Sign Up</h3>
+        <p class="text-whitesmoke">Create Your Account</p>
+        <div class="container-content">
+            <form method="POST" action="{{ route('register') }}">
+                @csrf
+                <div class="form-group" style="text-align: left; display:none">
+                    <input type="text" name="roles" value="member" class="form-control form-new"
+                        placeholder="Your company ?" required>
+                    <input type="text" name="status" value="0" class="form-control form-new"
+                        placeholder="Your company ?" required>
                 </div>
-            </div>
+                <div class="form-group" style="text-align: left">
+                    <input type="text" name="name" class="form-control form-new" placeholder="Your Name ?"
+                        required>
+                </div>
+                <div class="form-group" style="text-align: left">
+                    <input type="text" name="name_company" class="form-control form-new" placeholder="Your company ?"
+                        required>
+                </div>
+                <div class="form-group" style="text-align: left">
+                    <input type="email" name="email" input @error('email') is-invalid @enderror"
+                        id="exampleInputEmail1" aria-describedby="emailHelp" class="form-control form-new"
+                        placeholder="Your email ?" required>
+                    <div id="emailHelp" class="form-text m-1" style="color: gray">We'll never share your email with
+                        anyone else.</div>
+                    @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group" style="text-align: left">
+                    <input type="password" input @error('password') is-invalid @enderror" id="exampleInputPassword1"
+                        name="password" class="form-control form-new" placeholder="Password" required>
+                    @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="mb-3" style="text-align: left">
+                    <input type="password" id="password-confirm" placeholder="Confirmation password"
+                        name="password_confirmation" class="form-control" required autocomplete="new-password">
+                </div>
+
+                <div class="mt-5 mb-3" style="color: white">Have an account ? <a style="text-decoration: none"
+                        href="{{ route('login') }}">Sign in</a></div>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-primary mt-3" type="submit">Register</button>
+                </div>
+            </form>
         </div>
+        <p class="mt-4" style="color:gray"><small>Alpha&copy;All rights reserved.</small>
+        </p>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
-    </script>
 </body>
 
 </html>

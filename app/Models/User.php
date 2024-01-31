@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Carbon\Carbon;
 
 class User extends Authenticatable
 {
@@ -20,9 +21,19 @@ class User extends Authenticatable
     protected $fillable = [
         'id',
         'name',
+        'name_company',
+        'roles',
+        'status',
+        'created_at',
         'email',
         'password',
     ];
+
+    public function getCreatedAtAttribute($value)
+    {
+        $carbonDate = Carbon::parse($value);
+        return $carbonDate->format('d / m / Y  -  H:i');
+    }
 
     public function companies()
     {

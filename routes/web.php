@@ -33,14 +33,17 @@ Route::post('/store/message', [MessageController::class, 'store_message'])->name
 Route::get('/about', [CompanyController::class, 'index_about'])->name('index-about');
 
 
-Route::middleware(['admin'])->group(function () {
+Route::middleware(['user'])->group(function () {
     Route::get('/product', [ProductController::class, 'index_data'])->name('index-data');
     Route::patch('/product/{product}/update', [ProductController::class, 'update_data'])->name('update-data');
+    Route::patch('/member/{member}/update', [CompanyController::class, 'update_member'])->name('update-member');
+    Route::delete('/delete/{member}', [CompanyController::class, 'delete_member'])->name('delete-member');
     Route::delete('/product/{product}', [ProductController::class, 'delete_product'])->name('delete-product');
     Route::delete('/order/{message}', [MessageController::class, 'delete_order'])->name('delete-order');
     Route::post('/store/products', [ProductController::class, 'store_product'])->name('store-product');
     Route::get('/company', [CompanyController::class, 'index_company'])->name('index-company');
     Route::get('/orders', [MessageController::class, 'index_order'])->name('index-order');
+    Route::get('/list-member', [CompanyController::class, 'index_member'])->name('index-member');
     Route::get('/profile', [ProfileController::class, 'index_profile'])->name('index-profile');
     Route::post('/store/company', [CompanyController::class, 'store_company'])->name('store-company');
     Route::post('/profile', [ProfileController::class, 'update_profile'])->name('update-profile');

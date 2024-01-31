@@ -37,9 +37,7 @@
         </div>
     @endif
     <div class="login-container text-c animated flipInX">
-        <div>
-            <h1 class="logo-badge text-whitesmoke"><span class="fa fa-user-circle"></span></h1>
-        </div>
+
         <h3 class="text-whitesmoke">Sign In</h3>
         <p class="text-whitesmoke">Your Social Campaigns</p>
         <div class="container-content">
@@ -59,7 +57,7 @@
                 </div>
                 <div class="form-group" style="text-align: left">
                     <input type="password" input @error('password') is-invalid @enderror" id="exampleInputPassword1"
-                        name="password" class="form-control form-new" placeholder="********" required>
+                        name="password" class="form-control form-new" placeholder="Password" required>
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -71,14 +69,15 @@
                         id="exampleCheck1">
                     <label class="form-check-label" for="exampleCheck1" style="color: gray">Keep me signed in</label>
                 </div>
-
+                <div class="mt-3 mb-3" style="color: white">Don't have an account ? <a style="text-decoration: none"
+                        href="{{ route('register') }}">Sign up</a></div>
                 <div class="d-grid gap-2">
                     <button class="btn btn-primary mt-3" type="submit">Sign In</button>
                 </div>
             </form>
-            <p class="mt-3" style="color:gray"><small>&copy;Alpha, All rights reserved.</small>
-            </p>
         </div>
+        <p class="mt-4" style="color:gray"><small>Alpha&copy;All rights reserved.</small>
+        </p>
     </div>
 </body>
 
