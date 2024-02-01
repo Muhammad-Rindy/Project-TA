@@ -305,7 +305,7 @@
                                             </div>
                                         @else
                                             <div class="d-grid gap-2 col-6 mx-auto mb-5">
-                                                <button type="button" class="btn btn-secondary btn-sm disabled">Currently
+                                                <button type="button" class="btn btn-secondary btn-sm disabled">
                                                     Has been ordered
                                                 </button>
                                             </div>
