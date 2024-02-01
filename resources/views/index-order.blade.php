@@ -91,7 +91,7 @@
                                                     <div class="button-container">
                                                         <button type="button" class="btn btn-primary btn-sm m-button"
                                                             data-toggle="modal" data-target="#editModal{{ $message->id }}">
-                                                            Edit
+                                                            Show
                                                         </button>
                                                         <form action="{{ route('delete-order', $message) }}" method="post">
                                                             @method('delete')
