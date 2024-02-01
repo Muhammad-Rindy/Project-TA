@@ -228,11 +228,11 @@
                                                     <select class="form-select mt-1 mb-1"
                                                         aria-label="Default select example" name="status">
                                                         @if ($product->status == '1')
-                                                            <option value="1" disabled>Active</option>
-                                                            <option value="0" selected>Not Available</option>
+                                                            <option value="1">Active</option>
+                                                            <option value="0">Not Available</option>
                                                         @else
-                                                            <option value="0" disabled>Not Available</option>
-                                                            <option value="1" selected>Active</option>
+                                                            <option value="0">Not Available</option>
+                                                            <option value="1">Active</option>
                                                         @endif
                                                     </select>
                                                     <div style="text-align: left">
