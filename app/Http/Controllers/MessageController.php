@@ -21,6 +21,7 @@ class MessageController extends Controller
             'product_rent' => 'required',
             'company_id' => 'required',
             'product_id' => 'required',
+            'status' => 'required',
         ]);
 
 
@@ -35,6 +36,10 @@ class MessageController extends Controller
             'company_id' => $request->company_id,
             'product_id' => $request->product_id,
         ]);
+
+        $product = Product::find($request->product_id);
+        $product->status = 2;
+        $product->save();
 
         return Redirect::back()->with('success', 'Thank you, the company will contact you within 1 x 24 hours');
 
@@ -54,5 +59,14 @@ class MessageController extends Controller
         return Redirect::back()->with('success', 'Deleted successfully');
     }
 
+    public function update_message(Request $request, $id)
+{
+
+    $message = Message::findOrFail($id);
+    $message->product->update(['status' => $request->input('status')]);
+
+
+    return redirect()->back()->with('success', 'Data updated successfully');
+}
 
 }

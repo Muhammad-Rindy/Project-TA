@@ -64,6 +64,7 @@
                                     </tr>
                                 <tbody>
                                     @if ($messages === null)
+                                    @else
                                         @foreach ($messages as $message)
                                             <tr>
                                                 <td style="text-align: center; vertical-align:middle">{{ $loop->iteration }}
@@ -76,18 +77,21 @@
                                                     {{ $message->number_phone }}
                                                 <td style="text-align: center; vertical-align:middle">
                                                     @if ($message->product->status == 1)
-                                                        <span class="badge badge-light-danger fw-bold text-span">Waiting
-                                                            Confirmation</span>
-                                                    @else
+                                                        <span
+                                                            class="badge badge-light-danger fw-bold text-span">Decline</span>
+                                                    @elseif($message->product->status == 0)
                                                         <span
                                                             class="badge badge-light-success fw-bold text-span">Accept</span>
+                                                    @else
+                                                        <span class="badge badge-light-warning fw-bold text-span">Waiting
+                                                            Confirmation</span>
                                                     @endif
                                                 </td>
                                                 <td style="width:15%" class="td-button">
                                                     <div class="button-container">
                                                         <button type="button" class="btn btn-primary btn-sm m-button"
                                                             data-toggle="modal" data-target="#editModal{{ $message->id }}">
-                                                            Show
+                                                            Edit
                                                         </button>
                                                         <form action="{{ route('delete-order', $message) }}" method="post">
                                                             @method('delete')
@@ -109,7 +113,9 @@
                                                                 <div class="modal-body">
                                                                     <div class="container-fluid">
                                                                         <div class="row">
-                                                                            <form action="" method="post"
+                                                                            <form
+                                                                                action="{{ route('update-message', ['id' => $message->id]) }}"
+                                                                                method="post"
                                                                                 enctype="multipart/form-data">
                                                                                 @method('patch')
                                                                                 @csrf
@@ -178,11 +184,34 @@
                                                                                     aria-label="default input example"
                                                                                     value="{{ $message->time_rent }} day"
                                                                                     readonly>
+                                                                                @if ($message->product->status == '2')
+                                                                                    <div style="text-align: left">
+                                                                                        <label for="site"
+                                                                                            class="form-label">Update
+                                                                                            Order</label>
+                                                                                    </div>
+                                                                                    <select class="form-select mt-1 mb-1"
+                                                                                        aria-label="Default select example"
+                                                                                        name="status">
+                                                                                        @if ($message->product->status == '2')
+                                                                                            <option value="0"
+                                                                                                selected>
+                                                                                                Accept</option>
+                                                                                            <option value="1">
+                                                                                                Decline</option>
+                                                                                        @endif
+                                                                                    </select>
+                                                                                @endif
                                                                                 <div class="mt-7"
                                                                                     style="text-align:end">
                                                                                     <button type="button"
                                                                                         class="btn btn-secondary btn-sm"
                                                                                         data-dismiss="modal">Close</button>
+                                                                                    @if ($message->product->status == '2')
+                                                                                        <button type="submit"
+                                                                                            class="btn btn-primary btn-sm">Save
+                                                                                            changes</button>
+                                                                                    @endif
                                                                                 </div>
                                                                             </form>
                                                                         </div>
@@ -194,7 +223,6 @@
                                                 </td>
                                             </tr>
                                         @endforeach
-                                    @else
                                     @endif
                                 </tbody>
                                 </thead>

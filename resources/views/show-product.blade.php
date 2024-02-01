@@ -134,9 +134,12 @@
                                     <div class="col" style="text-align: end">
                                         @if ($product->status == 1)
                                             <span class="badge badge-light-success fw-bold text-span">Available</span>
-                                        @else
-                                            <span class="badge badge-light-warning fw-bold text-span">Not
+                                        @elseif($product->status == 0)
+                                            <span class="badge badge-light-danger fw-bold text-span">Not
                                                 Available</span>
+                                        @else
+                                            <span class="badge badge-light-warning fw-bold text-span">Waiting
+                                                Confirmation</span>
                                         @endif
                                     </div>
                                 </div>
@@ -203,8 +206,13 @@
                                 </div>
                             </div>
                             <div class="d-grid gap-2 col-6 mx-auto mt-5 mb-9">
-                                <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                                    data-bs-target="#staticBackdrop">Order</button>
+                                @if ($product->status == 1)
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">Order</button>
+                                @else
+                                    <button type="button" class="btn btn-primary btn-sm disabled" data-bs-toggle="modal"
+                                        data-bs-target="#staticBackdrop">has been ordered</button>
+                                @endif
                             </div>
                             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
                                 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -250,6 +258,11 @@
                                                 <input type="text" id="plat_rent" value="{{ $product->plat }}"
                                                     name="plat_rent" class="form-control" aria-describedby="name"
                                                     readonly>
+                                                <select id="status" style="display: none" name="status"
+                                                    class="form-select" aria-describedby="status">
+                                                    <option value="2">Order</option>
+                                                    <!-- tambahkan opsi lainnya sesuai kebutuhan -->
+                                                </select>
                                                 <div style=text-align:end class="mt-5">
                                                     <button style="border: solid gray 1px" type="button"
                                                         class="btn btn-outline-secondary btn-sm"

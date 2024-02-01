@@ -24,8 +24,7 @@
                         <h1 class="page-heading d-flex text-white fw-bolder fs-2 flex-column justify-content-center my-0">
                             CodeLab - Devs Team
                             <!--begin::Description-->
-                            <span class="page-desc text-white opacity-50 fs-6 fw-bold pt-4">Power Elite
-                                Seller</span>
+                            <span class="page-desc text-white opacity-50 fs-6 fw-bold pt-4">Power Elite</span>
                             <!--end::Description-->
                         </h1>
                         <!--end::Title-->
@@ -273,9 +272,12 @@
                                                     @if ($product->status == 1)
                                                         <span
                                                             class="badge badge-light-success fw-bold text-span">Available</span>
-                                                    @else
-                                                        <span class="badge badge-light-warning fw-bold text-span">Not
+                                                    @elseif($product->status == 0)
+                                                        <span class="badge badge-light-danger fw-bold text-span">Not
                                                             Available</span>
+                                                    @else
+                                                        <span class="badge badge-light-warning fw-bold text-span">Waiting
+                                                            Confirmation</span>
                                                     @endif
                                                 </div>
                                             </div>

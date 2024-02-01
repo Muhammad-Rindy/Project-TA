@@ -98,9 +98,12 @@
                                                     @if ($product->status == 1)
                                                         <span
                                                             class="badge badge-light-success fw-bold text-span">Available</span>
-                                                    @else
-                                                        <span class="badge badge-light-warning fw-bold text-span">Not
+                                                    @elseif($product->status == 0)
+                                                        <span class="badge badge-light-danger fw-bold text-span">Not
                                                             Available</span>
+                                                    @else
+                                                        <span class="badge badge-light-warning fw-bold text-span">Waiting
+                                                            Confirmation</span>
                                                     @endif
                                                 </td>
                                                 <td style="width:14%" class="td-button">
@@ -110,7 +113,8 @@
                                                             data-target="#editModal{{ $product->id }}">
                                                             Edit
                                                         </button>
-                                                        <form action="{{ route('delete-product', $product) }}"
+                                                        <form id="deleteForm"
+                                                            action="{{ route('delete-product', $product) }}"
                                                             method="post">
                                                             @method('delete')
                                                             @csrf
@@ -223,22 +227,12 @@
                                                     </div>
                                                     <select class="form-select mt-1 mb-1"
                                                         aria-label="Default select example" name="status">
-                                                        @if ($product->status == '1')
-                                                            <option value="1" selected>
-                                                                Available
-                                                            </option>
+                                                        @if ($product->status == '0')
+                                                            <option value="1" selected>Active</option>
+                                                            <option value="0" disabled>Waiting Verification</option>
                                                         @else
-                                                            <option value="0" selected>
-                                                                Not Available
-                                                            </option>
-                                                        @endif
-
-                                                        @if ($product->status == '1')
-                                                            <option value="0"> Not Available
-                                                            </option>
-                                                        @elseif($product->status == '0')
-                                                            <option value="1"> Available
-                                                            </option>
+                                                            <option value="1" disabled>Active</option>
+                                                            <option value="0" selected>Waiting Verification</option>
                                                         @endif
                                                     </select>
                                                     <div style="text-align: left">

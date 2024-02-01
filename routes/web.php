@@ -47,4 +47,5 @@ Route::middleware(['user'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'index_profile'])->name('index-profile');
     Route::post('/store/company', [CompanyController::class, 'store_company'])->name('store-company');
     Route::post('/profile', [ProfileController::class, 'update_profile'])->name('update-profile');
+    Route::patch('/messages/{id}', [MessageController::class, 'update_message'])->name('update-message');
 });
