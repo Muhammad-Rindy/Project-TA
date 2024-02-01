@@ -297,13 +297,20 @@
                                                         now</button>
                                                 </div>
                                             </form>
-                                        @else
+                                        @elseif($product->status == 0)
                                             <div class="d-grid gap-2 col-6 mx-auto mb-5">
                                                 <button type="button" class="btn btn-secondary btn-sm disabled">Currently
                                                     booked
                                                 </button>
                                             </div>
+                                        @else
+                                            <div class="d-grid gap-2 col-6 mx-auto mb-5">
+                                                <button type="button" class="btn btn-secondary btn-sm disabled">Currently
+                                                    Has been ordered
+                                                </button>
+                                            </div>
                                         @endif
+
                                         <div class="card-footer">
                                             @if ($product->company)
                                                 <small class="text-body-secondary">{{ $product->company->name }}</small>
