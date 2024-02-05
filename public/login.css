@@ -174,9 +174,7 @@ body {
 }
 
 .main-bg {
-    background-color: #0b2873;
-background-image: linear-gradient(225deg, #0b2873 0%, #1a29d1 50%, #0e1d60 100%);
-
+    background-image: linear-gradient(225deg, #111c3b 0%, #464975 50%, #111c3b 100%);
 }
 
 /* Login & Register Pages*/
@@ -200,7 +198,7 @@ background-image: linear-gradient(225deg, #0b2873 0%, #1a29d1 50%, #0e1d60 100%)
     #live {
         font-weight: bold;
         position:fixed;
-        bottom: 77px;
+        bottom: 60px;
         width: auto;
         right: 0px;
         margin: 10px;

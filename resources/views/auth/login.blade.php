@@ -11,6 +11,7 @@
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
         integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -28,14 +29,16 @@
 </head>
 
 <body class="main-bg">
-    @if (session('error-login'))
+    @if (session('error'))
         <div id="live">
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Wrong!{{ session('error-login') }}</strong>
+            <div style="background: linear-gradient(180deg, #972c2cb3 0%, #972c2cb3 100%); color: white; border: solid #bb0808 2px; font-size:14px"
+                class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Wrong ! {{ session('error') }} </strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
     @endif
+
     <div class="login-container text-c animated flipInX">
 
         <h3 class="text-whitesmoke">Sign In</h3>
@@ -79,6 +82,9 @@
         <p class="mt-4" style="color:gray"><small>Alpha&copy;All rights reserved.</small>
         </p>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

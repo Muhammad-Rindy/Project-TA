@@ -247,7 +247,7 @@
                                                 <label for="address" class="form-label">Address</label>
                                                 <input type="text" id="address" name="address" class="form-control"
                                                     aria-describedby="name">
-                                                <label for="time_rent" class="form-label">Long Rent</label>
+                                                <label for="time_rent" class="form-label">Long Rent (day)</label>
                                                 <input type="number" id="time_rent" name="time_rent"
                                                     class="form-control" aria-describedby="name">
                                                 <label for="product_rent" class="form-label">Model</label>
@@ -316,4 +316,5 @@
     </div>
     <!--end::Wrapper-->
     </div>
+
 @endsection
