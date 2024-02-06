@@ -23,8 +23,7 @@ class DatabaseSeeder extends Seeder
             'name_company' => 'Admin',
             'roles' => 'admin',
             'status' => '1',
-            'status' => '1',
-            'password'=> Hash::make('085264275564'),
+            'password'=> Hash::make('12345678'),
         ]);
     }
 }
