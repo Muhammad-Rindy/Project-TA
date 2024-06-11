@@ -98,10 +98,13 @@
 
                                                 <td style="width:14%" class="td-button">
                                                     <div class="button-container">
-                                                        <button type="button" class="btn btn-primary btn-sm m-button"
-                                                            data-toggle="modal" data-target="#editModal{{ $member->id }}">
-                                                            Edit
-                                                        </button>
+                                                        @if ($member->status == 0)
+                                                            <button type="button" class="btn btn-primary btn-sm m-button"
+                                                                data-toggle="modal"
+                                                                data-target="#editModal{{ $member->id }}">
+                                                                Edit
+                                                            </button>
+                                                        @endif
                                                         <form action="{{ route('delete-member', $member) }}" method="post">
                                                             @method('delete')
                                                             @csrf

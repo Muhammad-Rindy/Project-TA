@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Company;
 use App\Models\Product;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -15,12 +16,13 @@ class ProductController extends Controller
 
     public function index_product()
     {
+        $users = User::first();
         $user = auth()->user();
         $companies = $user ? $user->companies : null;
 
-        $products = Product::all();
+        $products = Product::with('company')->get();
 
-        return view('index-product', compact('companies', 'products'));
+        return view('index-product', compact('companies', 'products', 'users'));
     }
 
 
@@ -42,17 +44,17 @@ class ProductController extends Controller
 
 
         $user_id = Auth::id();
-    $company = Company::where('user_id', $user_id)->first();
+        $company = Company::where('user_id', $user_id)->first();
 
-    if ($company) {
-        // Check if $company is not null
-        $products = Product::where('company_id', $company->id)->get();
-    } else {
-        // If $company is null, set $products to an empty collection
-        $products = collect();
-    }
+        if ($company) {
+            // Check if $company is not null
+            $products = Product::where('company_id', $company->id)->get();
+        } else {
+            // If $company is null, set $products to an empty collection
+            $products = collect();
+        }
 
-    return view('index-data', compact('products'));
+        return view('index-data', compact('products'));
     }
     /**
      * Store a newly created resource in storage.
@@ -61,7 +63,7 @@ class ProductController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function update_data(Product $product, Request $request)
+    public function update_data(Product $product, Request $request)
     {
         $request->validate([
             'model' => 'required',
@@ -83,19 +85,19 @@ class ProductController extends Controller
 
 
         $product->update([
-                'model' => $request->model,
-                'merk' => $request->merk,
-                'type' => $request->type,
-                'plat' => $request->plat,
-                'status' => $request->status,
-                'speed' => $request->speed,
-                'transmition' => $request->transmition,
-                'fuel' => $request->fuel,
-                'color' => $request->color,
-                'years_output' => $request->years_output,
-                'description' => $request->description,
-                'location' => $request->location,
-                'price' => $request->price,
+            'model' => $request->model,
+            'merk' => $request->merk,
+            'type' => $request->type,
+            'plat' => $request->plat,
+            'status' => $request->status,
+            'speed' => $request->speed,
+            'transmition' => $request->transmition,
+            'fuel' => $request->fuel,
+            'color' => $request->color,
+            'years_output' => $request->years_output,
+            'description' => $request->description,
+            'location' => $request->location,
+            'price' => $request->price,
         ]);
 
         return Redirect::back()->with('success', 'Form submitted successfully');

@@ -133,11 +133,9 @@
 
                                 </div>
 
-                                <!--end::Page title-->
                                 <!--begin::Actions-->
                                 <div class="d-flex align-items-center gap-2 gap-lg-3">
-                                    @if (Auth::check())
-                                        <!-- Button trigger modal -->
+                                    @if (Auth::check() && Auth::user()->roles === 'member')
                                         <button type="button" style="border: solid gray 1px; font-weight:bold"
                                             class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
                                             data-bs-target="#staticBackdrop">
@@ -218,10 +216,6 @@
                                                                 <input type="text" name="description" id="description"
                                                                     class="form-control"
                                                                     aria-describedby="passwordHelpBlock" required>
-                                                                <label for="location" class="form-label">Location</label>
-                                                                <input type="text" name="location" id="location"
-                                                                    class="form-control"
-                                                                    aria-describedby="passwordHelpBlock" required>
                                                                 <label for="price" class="form-label">Price</label>
                                                                 <input type="number" id="price" name="price"
                                                                     class="form-control"
@@ -287,7 +281,8 @@
                                             <hr>
                                             <h3>Rp. {{ number_format($product->price, 2, ',', '.') }} / day</h3>
                                             <p class="card-text">Transmition : {{ $product->transmition }}</p>
-                                            <p>📍 Location : {{ $product->location }}</p>
+                                            <a href="{{ $product->company->address }}" style="font-size: 14px"
+                                                target="_blank">📍 Location (Klik Map)</a>
                                             <hr>
                                         </div>
                                         @if ($product->status == 1)
@@ -310,13 +305,13 @@
                                                 </button>
                                             </div>
                                         @endif
-
                                         <div class="card-footer">
                                             @if ($product->company)
-                                                <small class="text-body-secondary">{{ $product->company->name }}</small>
+                                                <small style="font-size: 14px"
+                                                    class="text-body-secondary">{{ $product->company->name }}</small>
                                                 <br>
                                             @endif
-                                            <small class="text-body-secondary">Created at
+                                            <small style="font-size:14px" class="text-body-secondary">Created at
                                                 {{ $product->created_at }}</small>
                                         </div>
                                     </div>
@@ -345,7 +340,6 @@
                             <a href="" target="_blank" class="menu-link px-2">Purchase</a>
                         </li>
                     </ul>
-                    <!--end::Menu-->
                 </div>
                 <!--end::Footer-->
             </div>

@@ -18,6 +18,7 @@ class Message extends Model
         'address',
         'time_rent',
         'plat_rent',
+        'price',
         'product_rent',
         'company_id',
         'product_id',

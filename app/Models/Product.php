@@ -24,7 +24,6 @@ class Product extends Model
         'years_output',
         'description',
         'company_id',
-        'location',
         'price',
         'image',
         'created_at'

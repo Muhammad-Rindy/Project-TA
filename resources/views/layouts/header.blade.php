@@ -97,7 +97,7 @@
                             <div class="cursor-pointer symbol symbol-35px">
                                 <a href="{{ route('login') }}"
                                     style="border: solid gray 1px; font-weight:bold; color:white;"
-                                    class="btn btn-outline-dark btn-sm">Member</a>
+                                    class="btn btn-outline-dark btn-sm">Login</a>
                             </div>
                         </div>
                     </div>

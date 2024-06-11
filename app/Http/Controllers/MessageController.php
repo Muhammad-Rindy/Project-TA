@@ -18,6 +18,7 @@ class MessageController extends Controller
             'address' => 'required',
             'time_rent' => 'required',
             'plat_rent' => 'required',
+            'price' => 'required',
             'product_rent' => 'required',
             'company_id' => 'required',
             'product_id' => 'required',
@@ -31,6 +32,7 @@ class MessageController extends Controller
             'number_phone' => $request->number_phone,
             'address' => $request->address,
             'time_rent' => $request->time_rent,
+            'price' => $request->price,
             'product_rent' => $request->product_rent,
             'plat_rent' => $request->plat_rent,
             'company_id' => $request->company_id,
@@ -60,13 +62,13 @@ class MessageController extends Controller
     }
 
     public function update_message(Request $request, $id)
-{
+    {
 
-    $message = Message::findOrFail($id);
-    $message->product->update(['status' => $request->input('status')]);
+        $message = Message::findOrFail($id);
+        $message->product->update(['status' => $request->input('status')]);
 
 
-    return redirect()->back()->with('success', 'Data updated successfully');
-}
+        return redirect()->back()->with('success', 'Data updated successfully');
+    }
 
 }

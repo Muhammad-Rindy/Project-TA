@@ -25,7 +25,6 @@ return new class extends Migration {
             $table->string('color');
             $table->string('years_output');
             $table->longText('description');
-            $table->string('location');
             $table->foreignId('company_id')->constrained('companys')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('price');
             $table->string('image');

@@ -199,7 +199,8 @@
                                             </tr>
                                             <tr>
                                                 <th style="width:50%">Location</th>
-                                                <td>{{ $product->location }}</td>
+                                                <td><a href="{{ $product->company->address }}" target="_blank">Klik
+                                                        Maps</a></td>
                                             </tr>
                                         </table>
                                     </div>
@@ -214,8 +215,9 @@
                                         data-bs-target="#staticBackdrop">has been ordered</button>
                                 @endif
                             </div>
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
+                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
+                                aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -257,6 +259,11 @@
                                                 <label for="plat_rent" class="form-label">Number Police</label>
                                                 <input type="text" id="plat_rent" value="{{ $product->plat }}"
                                                     name="plat_rent" class="form-control" aria-describedby="name"
+                                                    readonly>
+                                                <label for="price" class="form-label">Price</label>
+                                                <input type="number" id="price" value="{{ $product->price }}"
+                                                    class="form-control" aria-describedby="name" hidden>
+                                                <input type="number" name="price" value="" class="form-control"
                                                     readonly>
                                                 <select id="status" style="display: none" name="status"
                                                     class="form-select" aria-describedby="status">
@@ -318,3 +325,25 @@
     </div>
 
 @endsection
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var timeRentInput = document.getElementById('time_rent');
+        var priceInput = document.getElementById('price');
+        var totalPriceInput = document.querySelector('input[name="price"]');
+
+        // Menambahkan event listener untuk event input pada timeRentInput
+        timeRentInput.addEventListener('input', function() {
+            // Mengambil nilai dari time_rent input
+            var timeRent = parseFloat(timeRentInput.value);
+
+            // Mengambil nilai dari price input
+            var price = parseFloat(priceInput.value);
+
+            // Menghitung total harga
+            var totalPrice = timeRent * price;
+
+            // Memasukkan nilai total harga ke dalam input dengan name total_price
+            totalPriceInput.value = totalPrice.toFixed(2); // Format hingga 2 desimal
+        });
+    });
+</script>

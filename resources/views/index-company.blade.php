@@ -156,7 +156,9 @@
                                         <hr>
                                         <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
                                                 ago</small></p>
-                                        <h5 class="card-title" style="font-style:initial">📍 {{ $companies->address }}
+                                        <h5 class="card-title" style="font-style:initial">📍 Location <a
+                                                href="{{ $companies->address }}" target="_blank">(Klik
+                                                Maps)</a>
                                         </h5>
                                     </div>
                                 @endif

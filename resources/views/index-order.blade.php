@@ -58,7 +58,7 @@
                                         <th style="text-align: center; vertical-align:middle">No</th>
                                         <th style="text-align: center; vertical-align:middle">Name</th>
                                         <th style="text-align: center; vertical-align:middle">Email</th>
-                                        <th style="text-align: center; vertical-align:middle">No. Whatsapp</th>
+                                        <th style="text-align: center; vertical-align:middle">Whatsapp</th>
                                         <th style="text-align: center; vertical-align:middle">Status</th>
                                         <th style="text-align: center; vertical-align:middle">Action</th>
                                     </tr>
@@ -74,7 +74,9 @@
                                                 <td style="text-align: center; vertical-align:middle">{{ $message->email }}
                                                 </td>
                                                 <td style="text-align: center; vertical-align:middle">
-                                                    {{ $message->number_phone }}
+                                                    <a href="https://wa.me/{{ $message->number_phone }}"
+                                                        class="btn btn-success btn-sm" target="_blank">Klik
+                                                        Whatsapp</a>
                                                 <td style="text-align: center; vertical-align:middle">
                                                     @if ($message->product->status == 1)
                                                         <span
@@ -183,6 +185,16 @@
                                                                                     type="text" name="time_rent"
                                                                                     aria-label="default input example"
                                                                                     value="{{ $message->time_rent }} day"
+                                                                                    readonly>
+                                                                                <div style="text-align: left">
+                                                                                    <label for="site"
+                                                                                        class="form-label">Total
+                                                                                        Price</label>
+                                                                                </div>
+                                                                                <input class="form-control mt-1 mb-3"
+                                                                                    type="text" name="price"
+                                                                                    aria-label="default input example"
+                                                                                    value="{{ $message->price }}"
                                                                                     readonly>
                                                                                 @if ($message->product->status == '2')
                                                                                     <div style="text-align: left">
