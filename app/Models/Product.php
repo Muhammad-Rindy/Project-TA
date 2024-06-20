@@ -24,6 +24,7 @@ class Product extends Model
         'years_output',
         'description',
         'company_id',
+        'user_id',
         'price',
         'image',
         'created_at'
@@ -35,10 +36,13 @@ class Product extends Model
         return $carbonDate->format('d / m / Y  -  H:i');
     }
 
-
     public function company()
     {
         return $this->belongsTo(Company::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function messages()

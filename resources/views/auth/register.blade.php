@@ -26,22 +26,55 @@
         })();
     </script>
 </head>
+<style>
+    .form-control::-webkit-input-placeholder {
+        font-size: 15px;
+        font-family: sans-serif;
+    }
+
+    /*support mozilla*/
+    .form-control:-moz-input-placeholder {
+        font-size: 15px;
+        font-family: sans-serif;
+    }
+
+    .form-new {
+        padding: 7px 10px !important;
+        margin: 15px 0px;
+    }
+</style>
 
 <body class="main-bg">
-    @if (session('error-login'))
+    {{-- @if (session('error-login'))
         <div id="live">
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong>Wrong!{{ session('error-login') }}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
         </div>
+    @endif --}}
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
     @endif
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
+
     <div class="login-container text-c animated flipInX">
 
         <h3 class="text-whitesmoke">Sign Up</h3>
         <p class="text-whitesmoke">Create Your Account</p>
         <div class="container-content">
-            <form method="POST" action="{{ route('register') }}">
+            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group" style="text-align: left; display:none">
                     <input type="text" name="roles" value="member" class="form-control form-new"
@@ -50,17 +83,30 @@
                         placeholder="Your company ?" required>
                 </div>
                 <div class="form-group" style="text-align: left">
-                    <input type="text" name="name" class="form-control form-new" placeholder="Your Name ?"
+                    <input type="text" name="name" class="form-control form-new" placeholder="Name ?" required>
+                </div>
+                <div class="form-group" style="text-align: left">
+                    <input type="text" name="id_ktp" class="form-control form-new" placeholder="ID KTP ?" required>
+                </div>
+                <input type="file" name="image_company" id="image" class="form-control"
+                    aria-describedby="passwordHelpBlock" required>
+                <div id="emailHelp" class="form-text m-1" style="color: gray; text-align:left">*SIUP image</div>
+                <div class="form-group" style="text-align: left">
+                    <input type="text" name="name_company" class="form-control form-new" placeholder="Name company ?"
                         required>
                 </div>
                 <div class="form-group" style="text-align: left">
-                    <input type="text" name="name_company" class="form-control form-new" placeholder="Your company ?"
-                        required>
+                    <input type="text" name="address" class="form-control form-new"
+                        placeholder="Address company ? Ex. https://maps.app" required>
+                </div>
+                <div class="form-group" style="text-align: left">
+                    <input type="text" name="number_phone" class="form-control form-new"
+                        placeholder="Number phone company ? Ex. 62817653***" required>
                 </div>
                 <div class="form-group" style="text-align: left">
                     <input type="email" name="email" input @error('email') is-invalid @enderror"
                         id="exampleInputEmail1" aria-describedby="emailHelp" class="form-control form-new"
-                        placeholder="Your email ?" required>
+                        placeholder="Your Email ?" required>
                     <div id="emailHelp" class="form-text m-1" style="color: gray">We'll never share your email with
                         anyone else.</div>
                     @error('email')
@@ -79,7 +125,7 @@
                     @enderror
                 </div>
                 <div class="mb-3" style="text-align: left">
-                    <input type="password" id="password-confirm" placeholder="Confirmation password"
+                    <input type="password" id="password-confirm" placeholder="Password Confirmation"
                         name="password_confirmation" class="form-control" required autocomplete="new-password">
                 </div>
 

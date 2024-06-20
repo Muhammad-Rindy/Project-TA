@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      *
@@ -22,6 +21,10 @@ return new class extends Migration
             $table->string('roles');
             $table->tinyInteger('status');
             $table->string('name_company');
+            $table->string('number_phone');
+            $table->string('image_company');
+            $table->string('id_ktp');
+            $table->string('address');
             $table->rememberToken();
             $table->timestamps();
         });

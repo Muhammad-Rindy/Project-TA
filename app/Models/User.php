@@ -21,12 +21,16 @@ class User extends Authenticatable
     protected $fillable = [
         'id',
         'name',
-        'name_company',
-        'roles',
-        'status',
-        'created_at',
         'email',
         'password',
+        'roles',
+        'status',
+        'name_company',
+        'number_phone',
+        'image_company',
+        'id_ktp',
+        'address',
+        'created_at',
     ];
 
     public function getCreatedAtAttribute($value)
@@ -38,6 +42,11 @@ class User extends Authenticatable
     public function companies()
     {
         return $this->hasOne(Company::class);
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Product::class);
     }
 
     /**

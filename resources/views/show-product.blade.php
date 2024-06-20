@@ -26,42 +26,18 @@
                     <div class="d-flex gap-4 gap-lg-13">
                         <!--begin::Item-->
                         <div class="d-flex flex-column">
-                            <!--begin::Number-->
-                            <span class="text-white fw-bold fs-3 mb-1">$23,467.92</span>
-                            <!--end::Number-->
-                            <!--begin::Section-->
-                            <div class="text-white opacity-50 fw-bold">Avg. Monthly Sales</div>
-                            <!--end::Section-->
                         </div>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <div class="d-flex flex-column">
-                            <!--begin::Number-->
-                            <span class="text-white fw-bold fs-3 mb-1">$1,748.03</span>
-                            <!--end::Number-->
-                            <!--begin::Section-->
-                            <div class="text-white opacity-50 fw-bold">Today Spending</div>
-                            <!--end::Section-->
                         </div>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <div class="d-flex flex-column">
-                            <!--begin::Number-->
-                            <span class="text-white fw-bold fs-3 mb-1">3.8%</span>
-                            <!--end::Number-->
-                            <!--begin::Section-->
-                            <div class="text-white opacity-50 fw-bold">Overall Share</div>
-                            <!--end::Section-->
                         </div>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <div class="d-flex flex-column">
-                            <!--begin::Number-->
-                            <span class="text-white fw-bold fs-3 mb-1">-7.4%</span>
-                            <!--end::Number-->
-                            <!--begin::Section-->
-                            <div class="text-white opacity-50 fw-bold">7 Days</div>
-                            <!--end::Section-->
                         </div>
                         <!--end::Item-->
                     </div>
@@ -173,6 +149,15 @@
                                                 <th style="width:50%">Type</th>
                                                 <td>{{ $product->type }}</td>
                                             </tr>
+                                            <tr>
+                                                <td style="font-weight:bold">Phone Number</td>
+                                                <td><a class="btn btn-success btn-sm"
+                                                        href="https://wa.me/{{ $product->user->number_phone }}"
+                                                        target="_blank">Chat via
+                                                        Whatsap</a></td>
+                                            </tr>
+
+
                                         </table>
                                     </div>
                                     <div class="col">
@@ -191,15 +176,16 @@
                                             </tr>
                                             <tr>
                                                 <th style="width:50%">Email</th>
-                                                <td>{{ $product->company->email }}</td>
+                                                <td>{{ $product->user->email }}</td>
                                             </tr>
                                             <tr>
                                                 <th style="width:50%">Owner</th>
-                                                <td>{{ $product->company->name }}</td>
+                                                <td>{{ $product->user->name_company }}</td>
                                             </tr>
                                             <tr>
                                                 <th style="width:50%">Location</th>
-                                                <td><a href="{{ $product->company->address }}" target="_blank">Klik
+                                                <td><a class="btn btn-success btn-sm" href="{{ $product->user->address }}"
+                                                        target="_blank">Klik
                                                         Maps</a></td>
                                             </tr>
                                         </table>
@@ -215,9 +201,8 @@
                                         data-bs-target="#staticBackdrop">has been ordered</button>
                                 @endif
                             </div>
-                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static"
-                                data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+                                tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                 <div class="modal-dialog modal-dialog-centered modal-lg">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -244,7 +229,7 @@
                                                 <input type="email" id="email" name="email" class="form-control"
                                                     aria-describedby="name" required>
                                                 <label for="number_phone" class="form-label">No. Whatsapp</label>
-                                                <input type="number" id="number_phone" name="number_phone"
+                                                <input type="text" id="number_phone" name="number_phone"
                                                     class="form-control" aria-describedby="name" required>
                                                 <label for="address" class="form-label">Address</label>
                                                 <input type="text" id="address" name="address" class="form-control"

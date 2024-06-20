@@ -19,10 +19,9 @@ class ProductController extends Controller
         $users = User::first();
         $user = auth()->user();
         $companies = $user ? $user->companies : null;
+        $products = Product::with('user')->get();
 
-        $products = Product::with('company')->get();
-
-        return view('index-product', compact('companies', 'products', 'users'));
+        return view('index-product', compact('companies', 'products'));
     }
 
 
@@ -77,7 +76,6 @@ class ProductController extends Controller
             'color' => 'required',
             'years_output' => 'required',
             'description' => 'required',
-            'location' => 'required',
             'price' => 'required',
         ]);
 
@@ -96,7 +94,6 @@ class ProductController extends Controller
             'color' => $request->color,
             'years_output' => $request->years_output,
             'description' => $request->description,
-            'location' => $request->location,
             'price' => $request->price,
         ]);
 
@@ -119,7 +116,6 @@ class ProductController extends Controller
             'color' => 'required',
             'years_output' => 'required',
             'description' => 'required',
-            'location' => 'required',
             'price' => 'required',
             'company_id' => 'required|exists:companys,id',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed file types and size accordingly
@@ -133,9 +129,12 @@ class ProductController extends Controller
 
             Storage::disk('public')->put($path, file_get_contents($file));
 
+            $user = Auth::user()->id;
+
             Product::create([
                 'model' => $request->model,
                 'merk' => $request->merk,
+                'user_id' => $user,
                 'type' => $request->type,
                 'plat' => $request->plat,
                 'speed' => $request->speed,
@@ -146,7 +145,6 @@ class ProductController extends Controller
                 'color' => $request->color,
                 'years_output' => $request->years_output,
                 'description' => $request->description,
-                'location' => $request->location,
                 'price' => $request->price,
                 'image' => $path,
             ]);

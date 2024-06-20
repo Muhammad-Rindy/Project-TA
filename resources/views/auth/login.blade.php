@@ -27,6 +27,23 @@
         })();
     </script>
 </head>
+<style>
+    .form-control::-webkit-input-placeholder {
+        font-size: 15px;
+        font-family: sans-serif;
+    }
+
+    /*support mozilla*/
+    .form-control:-moz-input-placeholder {
+        font-size: 15px;
+        font-family: sans-serif;
+    }
+
+    .form-new {
+        padding: 7px 10px !important;
+        margin: 15px 0px;
+    }
+</style>
 
 <body class="main-bg">
     @if (session('error'))

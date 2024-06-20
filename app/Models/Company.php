@@ -12,16 +12,11 @@ class Company extends Model
     protected $table = 'companys';
     protected $fillable = [
         'id',
-        'name',
-        'email',
         'user_id',
-        'address',
         'description',
-        'number_phone',
-        'image',
     ];
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo(User::class);
     }

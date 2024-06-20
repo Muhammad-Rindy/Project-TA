@@ -19,17 +19,15 @@ class CompanyController extends Controller
      */
     public function index_company()
     {
+        $user = Auth::user();
+
         $companies = auth()->user()->companies;
 
-        // return response()->json($companies);
-
-        return view('index-company', compact('companies'));
+        return view('index-company', compact('user', 'companies'));
     }
     public function index_member()
     {
         $members = User::all();
-
-
         return view('index-member', compact('members'));
     }
 
@@ -43,7 +41,7 @@ class CompanyController extends Controller
 
 
         $member->update([
-                'status' => $request->status,
+            'status' => $request->status,
         ]);
 
         return Redirect::back()->with('success', 'Form submitted successfully');
@@ -74,79 +72,15 @@ class CompanyController extends Controller
     public function store_company(Request $request)
     {
         $request->validate([
-            'name' => 'required',
-            'email' => 'required',
-            'address' => 'required',
             'description' => 'required',
-            'number_phone' => 'required',
-            'image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust the allowed file types and size accordingly
         ]);
 
-
-        $file = $request->file('image');
-
-        if ($file) {
-            $path = time() . '_' . $file->getClientOriginalName();
-            $user = Auth::user()->id;
-
-            Storage::disk('public')->put($path, file_get_contents($file));
-
-            Company::create([
-                'name' => $request->name,
-                'user_id' => $user,
-                'email' => $request->email,
-                'number_phone' => $request->number_phone,
-                'address' => $request->address,
-                'description' => $request->description,
-                'image' => $path,
-            ]);
-        }
+        $user = Auth::user()->id;
+        Company::create([
+            'user_id' => $user,
+            'description' => $request->description,
+        ]);
 
         return Redirect::back()->with('success', 'Form submitted successfully');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -26,6 +26,7 @@ return new class extends Migration {
             $table->string('years_output');
             $table->longText('description');
             $table->foreignId('company_id')->constrained('companys')->cascadeOnUpdate()->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
             $table->string('price');
             $table->string('image');
             $table->timestamps();

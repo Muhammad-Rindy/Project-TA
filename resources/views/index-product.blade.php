@@ -34,42 +34,20 @@
                     <div class="d-flex gap-4 gap-lg-13">
                         <!--begin::Item-->
                         <div class="d-flex flex-column">
-                            <!--begin::Number-->
-                            <span class="text-white fw-bold fs-3 mb-1">$23,467.92</span>
-                            <!--end::Number-->
-                            <!--begin::Section-->
-                            <div class="text-white opacity-50 fw-bold">Avg. Monthly Sales</div>
-                            <!--end::Section-->
                         </div>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <div class="d-flex flex-column">
                             <!--begin::Number-->
-                            <span class="text-white fw-bold fs-3 mb-1">$1,748.03</span>
-                            <!--end::Number-->
-                            <!--begin::Section-->
-                            <div class="text-white opacity-50 fw-bold">Today Spending</div>
                             <!--end::Section-->
                         </div>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <div class="d-flex flex-column">
-                            <!--begin::Number-->
-                            <span class="text-white fw-bold fs-3 mb-1">3.8%</span>
-                            <!--end::Number-->
-                            <!--begin::Section-->
-                            <div class="text-white opacity-50 fw-bold">Overall Share</div>
-                            <!--end::Section-->
                         </div>
                         <!--end::Item-->
                         <!--begin::Item-->
                         <div class="d-flex flex-column">
-                            <!--begin::Number-->
-                            <span class="text-white fw-bold fs-3 mb-1">-7.4%</span>
-                            <!--end::Number-->
-                            <!--begin::Section-->
-                            <div class="text-white opacity-50 fw-bold">7 Days</div>
-                            <!--end::Section-->
                         </div>
                         <!--end::Item-->
                     </div>
@@ -240,7 +218,7 @@
                                                 @else
                                                     <div class="alert alert-danger"
                                                         style="margin: 15px 30px; text-align:center">
-                                                        Your not have company. Please create a company first!
+                                                        Please complete data your company first!
                                                     </div>
                                                 @endif
                                             </div>
@@ -281,7 +259,7 @@
                                             <hr>
                                             <h3>Rp. {{ number_format($product->price, 2, ',', '.') }} / day</h3>
                                             <p class="card-text">Transmition : {{ $product->transmition }}</p>
-                                            <a href="{{ $product->company->address }}" style="font-size: 14px"
+                                            <a href="{{ $product->user->address }}" style="font-size: 14px"
                                                 target="_blank">📍 Location (Klik Map)</a>
                                             <hr>
                                         </div>
@@ -306,11 +284,9 @@
                                             </div>
                                         @endif
                                         <div class="card-footer">
-                                            @if ($product->company)
-                                                <small style="font-size: 14px"
-                                                    class="text-body-secondary">{{ $product->company->name }}</small>
-                                                <br>
-                                            @endif
+                                            <small style="font-size: 14px"
+                                                class="text-body-secondary">{{ $product->user->name_company }}</small>
+                                            <br>
                                             <small style="font-size:14px" class="text-body-secondary">Created at
                                                 {{ $product->created_at }}</small>
                                         </div>

@@ -76,7 +76,7 @@
                                             <button type="button" style="border: solid gray 1px; font-weight:bold"
                                                 class="btn btn-outline-secondary btn-sm" data-bs-toggle="modal"
                                                 data-bs-target="#staticBackdrop">
-                                                + Create Company
+                                                + Complete data company
                                             </button>
                                         @endif
 
@@ -97,29 +97,10 @@
                                                         enctype="multipart/form-data">
                                                         <div class="modal-body">
                                                             @csrf
-                                                            <label for="name" class="form-label">Name Company</label>
-                                                            <input type="text" id="name" name="name"
-                                                                class="form-control" aria-describedby="name" required>
-                                                            <label for="address" class="form-label">Address</label>
-                                                            <input type="text" id="address" name="address"
-                                                                class="form-control" aria-describedby="address" required>
                                                             <label for="description" class="form-label">Description
                                                                 Company</label>
                                                             <input type="text" name="description" id="description"
                                                                 class="form-control" aria-describedby="description"
-                                                                required>
-                                                            <label for="email" class="form-label">Email Company</label>
-                                                            <input type="email" name="email" id="email"
-                                                                class="form-control" aria-describedby="email" required>
-                                                            <label for="number_phone" class="form-label">Number Phone
-                                                                Company</label>
-                                                            <input type="text" name="number_phone" id="number_phone"
-                                                                class="form-control" aria-describedby="passwordHelpBlock"
-                                                                required>
-                                                            <label for="image" class="form-label">Upload Image Your
-                                                                Company</label>
-                                                            <input type="file" name="image" id="image"
-                                                                class="form-control" aria-describedby="passwordHelpBlock"
                                                                 required>
                                                             <div style=text-align:end class="mt-5">
                                                                 <button style="border: solid gray 1px" type="button"
@@ -138,29 +119,34 @@
                         </div>
                         <div class="row row-cols-1 g-4">
                             <div class="card mb-3">
+                                <img src="{{ asset('storage/' . $user->image_company) }}" class="card-img-top mt-2"
+                                    alt="Product Image">
+                                <div class="card-body">
+                                    <h2 class="card-title" style="text-align: center">{{ $user->name_company }}</h2>
+                                    <hr>
+                                    <br>
+                                    <h5 class="card-title">Email : <span
+                                            style="font-style:italic">{{ $user->email }}</span></h5>
+                                    <h5 class="card-title">Call Center : <span style="font-style: italic"><a
+                                                href="https://wa.me/{{ $user->number_phone }}"
+                                                class="btn btn-success btn-sm mb-3" target="_blank">Chat
+                                                via WhatsApp</a></span></h5>
+
+                                    <hr>
+                                    <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
+                                            ago</small></p>
+                                    <h5 class="card-title" style="font-style:initial">📍 Location <a
+                                            href="{{ $user->address }}" target="_blank">(Klik
+                                            Maps)</a>
+                                    </h5>
+                                </div>
                                 @if (empty($companies))
                                 @else
-                                    <img src="{{ asset('storage/' . $companies->image) }}" class="card-img-top mt-2"
-                                        alt="Product Image">
-                                    <div class="card-body">
-                                        <h2 class="card-title" style="text-align: center">{{ $companies->name }}</h2>
-                                        <hr>
-                                        <p class="card-text" style="text-align: justify">{{ $companies->description }}
-                                        </p>
-                                        <br>
-                                        <h5 class="card-title">Email : <span
-                                                style="font-style:italic">{{ $companies->email }}</span></h5>
-                                        <h5 class="card-title">Call Center : <span
-                                                style="font-style: italic">{{ $companies->number_phone }}</span></h5>
-
-                                        <hr>
-                                        <p class="card-text"><small class="text-body-secondary">Last updated 3 mins
-                                                ago</small></p>
-                                        <h5 class="card-title" style="font-style:initial">📍 Location <a
-                                                href="{{ $companies->address }}" target="_blank">(Klik
-                                                Maps)</a>
-                                        </h5>
+                                    <div class="card-body" style="margin-top: -40px">
+                                        <h4 class="card-text" style="text-align: justify">{{ $companies->description }}
+                                        </h4>
                                     </div>
+                                    <br>
                                 @endif
                             </div>
                             @endif

@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -37,7 +38,7 @@ class RegisterController extends Controller
      * @return void
      */
 
-     public function index()
+    public function index()
     {
         return view('auth.register');
     }
@@ -62,6 +63,10 @@ class RegisterController extends Controller
             'name_company' => ['required'],
             'roles' => ['required'],
             'status' => ['required'],
+            'number_phone' => ['required'],
+            'image_company' => ['required', 'image', 'mimes:jpeg,png,jpg,gif', 'max:2048'],
+            'id_ktp' => ['required'],
+            'address' => ['required'],
         ]);
     }
 
@@ -73,6 +78,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $file = $data['image_company'];
+
+        // Proses file gambar
+        $path = null;
+        if ($file) {
+            $path = time() . '_' . $file->getClientOriginalName();
+            Storage::disk('public')->put($path, file_get_contents($file));
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -80,6 +93,10 @@ class RegisterController extends Controller
             'status' => $data['status'],
             'name_company' => $data['name_company'],
             'password' => Hash::make($data['password']),
+            'number_phone' => ($data['number_phone']),
+            'image_company' => $path,
+            'id_ktp' => ($data['id_ktp']),
+            'address' => ($data['address']),
         ]);
     }
 }

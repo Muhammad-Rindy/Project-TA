@@ -15,6 +15,8 @@ class Message extends Model
         'name',
         'email',
         'number_phone',
+        'id_ktp',
+        'image',
         'address',
         'time_rent',
         'plat_rent',

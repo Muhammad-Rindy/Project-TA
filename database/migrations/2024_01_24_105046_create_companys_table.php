@@ -14,13 +14,8 @@ return new class extends Migration {
     {
         Schema::create('companys', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
-            $table->string('address');
             $table->longText('description');
             $table->foreignId('user_id')->constrained('users')->cascadeOnUpdate()->cascadeOnDelete();
-            $table->string('number_phone');
-            $table->string('image');
             $table->timestamps();
         });
     }

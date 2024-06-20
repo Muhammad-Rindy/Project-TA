@@ -52,18 +52,14 @@
                                     </a>
                                 </div>
                             </div>
-
                         </div>
-
                         <div class="table-responsive">
-
                             <table class="table table-bordered">
                                 <thead class="table-dark">
                                     <tr>
                                         <th style="text-align: center; vertical-align:middle">No</th>
                                         <th style="text-align: center; vertical-align:middle">Name</th>
                                         <th style="text-align: center; vertical-align:middle">Roles</th>
-                                        <th style="text-align: center; vertical-align:middle">Name Company</th>
                                         <th style="text-align: center; vertical-align:middle">Created_at</th>
                                         <th style="text-align: center; vertical-align:middle">Status</th>
                                         <th style="text-align: center; vertical-align:middle">Action</th>
@@ -79,9 +75,6 @@
                                                 <td style="text-align: center; vertical-align:middle">{{ $member->name }}
                                                 </td>
                                                 <td style="text-align: center; vertical-align:middle">{{ $member->roles }}
-                                                </td>
-                                                <td style="text-align: center; vertical-align:middle">
-                                                    {{ $member->name_company }}
                                                 </td>
                                                 <td style="text-align: center; vertical-align:middle">
                                                     {{ $member->created_at }}
@@ -105,12 +98,17 @@
                                                                 Edit
                                                             </button>
                                                         @endif
-                                                        <form action="{{ route('delete-member', $member) }}" method="post">
-                                                            @method('delete')
-                                                            @csrf
-                                                            <button type="submit"
-                                                                class="btn btn-danger btn-sm m-button">Delete</button>
-                                                        </form>
+                                                        @if ($member->roles === 'member')
+                                                            <form action="{{ route('delete-member', $member) }}"
+                                                                method="post">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn btn-danger btn-sm m-button">Delete</button>
+                                                            </form>
+                                                        @else
+                                                            <div>-</div>
+                                                        @endif
                                                     </div>
                         </div>
                         <div class="modal" id="editModal{{ $member->id }}" tabindex="-1" role="dialog"
@@ -131,7 +129,36 @@
                                                     @method('patch')
                                                     @csrf
                                                     <div style="text-align: left">
-                                                        <label for="site" class="form-label">Status member</label>
+                                                        <label for="site" class="form-label">Name Company</label>
+                                                    </div>
+                                                    <input class="form-control mt-1 mb-3" type="text" name="created_at"
+                                                        aria-label="default input example"
+                                                        value="{{ $member->name_company }}" readonly>
+                                                    <div style="text-align: left">
+                                                        <label for="site" class="form-label">Address Company</label>
+                                                    </div>
+                                                    <a href="{{ $member->address }}" class="btn btn-success btn-sm mb-3"
+                                                        target="_blank">Klik Maps</a>
+                                                    <div style="text-align: left">
+                                                        <label for="site" class="form-label">Number phone</label>
+                                                    </div>
+                                                    <a href="https://wa.me/{{ $member->number_phone }}"
+                                                        class="btn btn-success btn-sm mb-3" target="_blank">Chat
+                                                        via WhatsApp</a>
+                                                    <div style="text-align: left">
+                                                        <label for="site" class="form-label">ID KTP</label>
+                                                    </div>
+                                                    <input class="form-control mt-1 mb-3" type="text"
+                                                        name="created_at" aria-label="default input example"
+                                                        value="{{ $member->id_ktp }}" readonly>
+                                                    <div style="text-align: left">
+                                                        <label for="site" class="form-label">Image SIUP</label>
+                                                    </div>
+                                                    <img src="{{ asset('storage/' . $member->image_company) }}"
+                                                        class="card-img-top mt-2" alt="Product Image">
+                                                    <div style="text-align: left">
+                                                        <label for="site" class="form-label mt-3">Status
+                                                            member</label>
                                                     </div>
                                                     <select class="form-select mt-1 mb-1"
                                                         aria-label="Default select example" name="status">
@@ -147,7 +174,8 @@
                                         </div>
                                         <div style=text-align:end class="mt-5">
                                             <button style="border: solid gray 1px" type="button"
-                                                class="btn btn-outline-secondary btn-sm" data-dismiss="modal">Close</button>
+                                                class="btn btn-outline-secondary btn-sm"
+                                                data-dismiss="modal">Close</button>
                                             <button type="submit" class="btn btn-primary btn-sm">Save
                                                 changes</button>
                                         </div>

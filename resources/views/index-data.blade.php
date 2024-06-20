@@ -212,12 +212,6 @@
                                                     <input name="description" value="{{ $product->description }}"
                                                         class="form-control mt-1 mb-3" id="floatingTextarea">
                                                     <div style="text-align: left">
-                                                        <label for="name" class="form-label">Location</label>
-                                                    </div>
-                                                    <input class="form-control mt-1 mb-3" type="text" name="location"
-                                                        aria-label="default input example"
-                                                        value="{{ $product->location }}">
-                                                    <div style="text-align: left">
                                                         <label for="name" class="form-label">Price</label>
                                                     </div>
                                                     <input class="form-control mt-1 mb-3" type="number" name="price"
