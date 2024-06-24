@@ -82,20 +82,23 @@
                                                 <td style="text-align: center; vertical-align:middle">
                                                     @if ($member->status == 1)
                                                         <span
-                                                            class="badge badge-light-success fw-bold text-span">Verified</span>
+                                                            class="badge badge-light-success fw-bold text-span">Accept</span>
                                                     @elseif($member->status == 0)
                                                         <span class="badge badge-light-warning fw-bold text-span">Waiting
                                                             Verification</span>
+                                                    @elseif($member->status == 2)
+                                                        <span
+                                                            class="badge badge-light-warning fw-bold text-span">Decline</span>
                                                     @endif
                                                 </td>
 
                                                 <td style="width:14%" class="td-button">
                                                     <div class="button-container">
-                                                        @if ($member->status == 0)
+                                                        @if ($member->roles !== 'admin')
                                                             <button type="button" class="btn btn-primary btn-sm m-button"
                                                                 data-toggle="modal"
                                                                 data-target="#editModal{{ $member->id }}">
-                                                                Edit
+                                                                Show
                                                             </button>
                                                         @endif
                                                         @if ($member->roles === 'member')
@@ -135,6 +138,12 @@
                                                         aria-label="default input example"
                                                         value="{{ $member->name_company }}" readonly>
                                                     <div style="text-align: left">
+                                                        <label for="site" class="form-label">Email</label>
+                                                    </div>
+                                                    <input class="form-control mt-1 mb-3" type="text" name="created_at"
+                                                        aria-label="default input example" value="{{ $member->email }}"
+                                                        readonly>
+                                                    <div style="text-align: left">
                                                         <label for="site" class="form-label">Address Company</label>
                                                     </div>
                                                     <a href="{{ $member->address }}" class="btn btn-success btn-sm mb-3"
@@ -156,20 +165,22 @@
                                                     </div>
                                                     <img src="{{ asset('storage/' . $member->image_company) }}"
                                                         class="card-img-top mt-2" alt="Product Image">
-                                                    <div style="text-align: left">
-                                                        <label for="site" class="form-label mt-3">Status
-                                                            member</label>
-                                                    </div>
-                                                    <select class="form-select mt-1 mb-1"
-                                                        aria-label="Default select example" name="status">
-                                                        @if ($member->status == '0')
-                                                            <option value="1" selected>Active</option>
-                                                            <option value="0" disabled>Waiting Verification</option>
-                                                        @else
-                                                            <option value="1" disabled>Active</option>
-                                                            <option value="0" selected>Waiting Verification</option>
-                                                        @endif
-                                                    </select>
+                                                    @if ($member->status == 0)
+                                                        <div style="text-align: left">
+                                                            <label for="site" class="form-label mt-3">Status
+                                                                member</label>
+                                                        </div>
+                                                        <select class="form-select mt-1 mb-1"
+                                                            aria-label="Default select example" name="status">
+                                                            @if ($member->status == '0')
+                                                                <option value="0" selected disabled>Waiting
+                                                                    Verification
+                                                                </option>
+                                                                <option value="1">Accept</option>
+                                                                <option value="2">Decline</option>
+                                                            @endif
+                                                        </select>
+                                                    @endif
                                             </div>
                                         </div>
                                         <div style=text-align:end class="mt-5">
