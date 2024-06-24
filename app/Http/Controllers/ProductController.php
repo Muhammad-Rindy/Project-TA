@@ -20,8 +20,8 @@ class ProductController extends Controller
         $user = auth()->user();
         $companies = $user ? $user->companies : null;
         $products = Product::with('user')
-            ->orderBy('status', 'asc')
-            ->orderBy('id', 'desc')
+            ->orderByRaw("CASE WHEN status = 1 THEN 0 ELSE 1 END") // Urutan status 1 paling atas
+            ->orderBy('id', 'desc') // Urutan id descending
             ->get();
 
         return view('index-product', compact('companies', 'products'));
