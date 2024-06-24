@@ -59,7 +59,7 @@
     <div class="login-container text-c animated flipInX">
 
         <h3 class="text-whitesmoke">Sign In</h3>
-        <p class="text-whitesmoke">Your Social Campaign</p>
+        <p class="text-whitesmoke">Your Social Campaigns</p>
         <div class="container-content">
             <form method="POST" action="{{ route('login') }}">
                 @csrf
