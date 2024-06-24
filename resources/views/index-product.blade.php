@@ -263,25 +263,28 @@
                                                 target="_blank">📍 Location (Klik Map)</a>
                                             <hr>
                                         </div>
-                                        @if ($product->status == 1)
-                                            <form action="{{ route('show-product', $product) }}" method="get">
-                                                <div class="d-grid gap-2 col-6 mx-auto">
-                                                    <button type="submit" class="btn btn-primary btn-sm">Booking
-                                                        now</button>
+                                        @if (!Auth::check())
+                                            @if ($product->status == 1)
+                                                <form action="{{ route('show-product', $product) }}" method="get">
+                                                    <div class="d-grid gap-2 col-6 mx-auto">
+                                                        <button type="submit" class="btn btn-primary btn-sm">Booking
+                                                            now</button>
+                                                    </div>
+                                                </form>
+                                            @elseif($product->status == 0)
+                                                <div class="d-grid gap-2 col-6 mx-auto mb-5">
+                                                    <button type="button"
+                                                        class="btn btn-secondary btn-sm disabled">Currently
+                                                        booked
+                                                    </button>
                                                 </div>
-                                            </form>
-                                        @elseif($product->status == 0)
-                                            <div class="d-grid gap-2 col-6 mx-auto mb-5">
-                                                <button type="button" class="btn btn-secondary btn-sm disabled">Currently
-                                                    booked
-                                                </button>
-                                            </div>
-                                        @else
-                                            <div class="d-grid gap-2 col-6 mx-auto mb-5">
-                                                <button type="button" class="btn btn-secondary btn-sm disabled">
-                                                    Has been ordered
-                                                </button>
-                                            </div>
+                                            @else
+                                                <div class="d-grid gap-2 col-6 mx-auto mb-5">
+                                                    <button type="button" class="btn btn-secondary btn-sm disabled">
+                                                        Has been ordered
+                                                    </button>
+                                                </div>
+                                            @endif
                                         @endif
                                         <div class="card-footer">
                                             <small style="font-size: 14px"

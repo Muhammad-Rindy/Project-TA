@@ -113,14 +113,16 @@
                                                             data-target="#editModal{{ $product->id }}">
                                                             Edit
                                                         </button>
-                                                        <form id="deleteForm"
-                                                            action="{{ route('delete-product', $product) }}"
-                                                            method="post">
-                                                            @method('delete')
-                                                            @csrf
-                                                            <button type="submit"
-                                                                class="btn btn-danger btn-sm m-button">Delete</button>
-                                                        </form>
+                                                        @if ($product->status !== 2)
+                                                            <form id="deleteForm"
+                                                                action="{{ route('delete-product', $product) }}"
+                                                                method="post">
+                                                                @method('delete')
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn btn-danger btn-sm m-button">Delete</button>
+                                                            </form>
+                                                        @endif
                                                     </div>
                         </div>
                         <div class="modal" id="editModal{{ $product->id }}" tabindex="-1" role="dialog"
@@ -222,11 +224,11 @@
                                                     <select class="form-select mt-1 mb-1"
                                                         aria-label="Default select example" name="status">
                                                         @if ($product->status == '1')
-                                                            <option value="1">Active</option>
+                                                            <option value="1">Available</option>
                                                             <option value="0">Not Available</option>
                                                         @else
                                                             <option value="0">Not Available</option>
-                                                            <option value="1">Active</option>
+                                                            <option value="1">Available</option>
                                                         @endif
                                                     </select>
                                                     <div style="text-align: left">
