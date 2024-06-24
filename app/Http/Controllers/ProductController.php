@@ -19,7 +19,10 @@ class ProductController extends Controller
         $users = User::first();
         $user = auth()->user();
         $companies = $user ? $user->companies : null;
-        $products = Product::with('user')->get();
+        $products = Product::with('user')
+            ->orderBy('status', 'asc')
+            ->orderBy('id', 'desc')
+            ->get();
 
         return view('index-product', compact('companies', 'products'));
     }
