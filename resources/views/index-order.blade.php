@@ -79,8 +79,8 @@
                                                         Whatsapp</a>
                                                 <td style="text-align: center; vertical-align:middle">
                                                     @if ($message->product->status == 1)
-                                                        <span
-                                                            class="badge badge-light-danger fw-bold text-span">Decline</span>
+                                                        <span class="badge badge-light-danger fw-bold text-span">Order
+                                                            Completed</span>
                                                     @elseif($message->product->status == 0)
                                                         <span
                                                             class="badge badge-light-success fw-bold text-span">Accept</span>
